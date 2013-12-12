@@ -53,35 +53,22 @@ int main(int argc, char **argv)
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 	};
 	
-	std::vector<std::vector<sf::Sprite> > collisionSprites;
-	collisionSprites.resize(20);
-	for (int i = 0; i < 20; ++i)
+	for (int h = 0; h < 20; ++h)
 	{
-		collisionSprites[i].resize(20);
-	}
-	
-	for (int i = 0; i < 20; ++i)
-	{
+		collisionGrid[h][0] = 1;
+		collisionGrid[h][19] = 1;
+		collisionGrid[0][h] = 1;
+		collisionGrid[19][h] = 1;
 		
-		collisionGrid[0][0] = 1;
-		collisionGrid[i][0] = 1;
-		collisionGrid[i][19] = 1;
-		collisionGrid[0][i] = 1;
-		collisionGrid[19][i] = 1;
+		/*for (int w = 0; w < 20; ++w)
+		{
+			if (h % 2 == 0 && w % 2 == 0)
+			{
+				collisionGrid[h][w] = 1;
+			}
+		}*/
 	}
 	
-	for (int i = 0; i < 20; ++i)
-	{
-		for (int j = 0; j < 20; ++j)
-		{
-			//if (collisionGrid[i][j] == 1)
-			{
-				sf::Sprite s(tile2);
-				s.setPosition(i*32, j*32);
-				collisionSprites[i].push_back(s);
-			}
-		}
-	}
 	//Map
 	sf::VertexArray map(sf::Quads, 1600);
 	for (int h = 0; h < 640/32; ++h)
@@ -145,18 +132,20 @@ int main(int argc, char **argv)
 		window.clear(sf::Color(40, 40, 40));
 	
 		window.draw(map, &tile);
-		for (int i = 0; i < 20; ++i)
+		
+		for (int h = 0; h < 20; ++h)
 		{
-			for (int j = 0; j < 20; ++j)
+			for (int w = 0; w < 20; ++w)
 			{
-				window.draw(collisionSprites[i][j]);
+				if (collisionGrid[h][w] == 1)
+				{
+					sf::Sprite s(tile2);
+					s.setPosition(w*32, h*32);
+					window.draw(s);
+				}
 			}
 		}
-		sf::Sprite solid;
-		solid.setTexture(tile2);
-		solid.setPosition(sf::Vector2f(320, 320));
-		window.draw(solid);
-		window.draw(collisionSprites[0][0]);
+		
 		window.draw(fps);
 		
 		window.display();
