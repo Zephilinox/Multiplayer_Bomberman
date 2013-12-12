@@ -9,6 +9,12 @@
   <Dependencies/>
   <VirtualDirectory Name="src">
     <File Name="main.cpp"/>
+    <File Name="src/ResourceManager.cpp"/>
+    <File Name="src/Utility.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="include">
+    <File Name="include/ResourceManager.hpp"/>
+    <File Name="include/Utility.hpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
@@ -30,21 +36,31 @@
         <IncludePath Value="src"/>
         <IncludePath Value="include"/>
         <IncludePath Value="dll"/>
-        <IncludePath Value="Z:/Programming/C++/SFML-2.1/include"/>
-        <IncludePath Value="Z:/Programming/C++/SFML-2.1/bin"/>
+        <IncludePath Value="fonts"/>
+        <IncludePath Value="textures"/>
+        <IncludePath Value="E:/Programming/C++/SFML-2.1/include"/>
+        <IncludePath Value="E:/Programming/C++/SFML-2.1/bin"/>
       </Compiler>
       <Linker Options="-lsfml-graphics;-lsfml-window;-lsfml-system;" Required="yes">
         <LibraryPath Value="."/>
         <LibraryPath Value="src"/>
         <LibraryPath Value="include"/>
         <LibraryPath Value="dll"/>
-        <LibraryPath Value="Z:/Programming/C++/SFML-2.1/lib"/>
-        <LibraryPath Value="Z:/Programming/C++/SFML-2.1/bin"/>
+        <LibraryPath Value="fonts"/>
+        <LibraryPath Value="textures"/>
+        <LibraryPath Value="E:/Programming/C++/SFML-2.1/lib"/>
+        <LibraryPath Value="E:/Programming/C++/SFML-2.1/bin"/>
         <Library Value="sfml-graphics"/>
         <Library Value="sfml-window"/>
         <Library Value="sfml-system"/>
       </Linker>
-      <ResourceCompiler Options="" Required="no"/>
+      <ResourceCompiler Options="" Required="no">
+        <IncludePath Value="fonts"/>
+        <IncludePath Value="textures"/>
+        <IncludePath Value="src"/>
+        <IncludePath Value="include"/>
+        <IncludePath Value="dll"/>
+      </ResourceCompiler>
       <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
         <![CDATA[]]>

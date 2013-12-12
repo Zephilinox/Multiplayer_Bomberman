@@ -5,18 +5,18 @@
 ## Debug
 ProjectName            :=Multiplayer_Bomberman
 ConfigurationName      :=Debug
-WorkspacePath          := "Z:\Programming\GithubRepositories\Multiplayer_Bomberman"
-ProjectPath            := "Z:\Programming\GithubRepositories\Multiplayer_Bomberman"
+WorkspacePath          := "E:\Programming\GithubRepositories\Multiplayer_Bomberman"
+ProjectPath            := "E:\Programming\GithubRepositories\Multiplayer_Bomberman"
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=Zephilinox
+User                   :=HEA12177255
 Date                   :=12/12/13
-CodeLitePath           :="Z:\Programming\C++\CodeLite"
-LinkerName             :=g++
-SharedObjectLinkerName :=g++ -shared -fPIC
+CodeLitePath           :="E:\Programming\C++\CodeLite"
+LinkerName             :=E:\Programming\C++\MinGW-4.7.1\bin\g++
+SharedObjectLinkerName :=E:\Programming\C++\MinGW-4.7.1\bin\g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
 PreprocessSuffix       :=.o.i
@@ -36,34 +36,34 @@ ObjectsFileList        :="Multiplayer_Bomberman.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=makedir
 RcCmpOptions           := 
-RcCompilerName         :=windres
+RcCompilerName         :=E:\Programming\C++\MinGW-4.7.1\bin\windres
 LinkOptions            :=  -lsfml-graphics -lsfml-window -lsfml-system 
-IncludePath            := $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/include  $(IncludeSwitch). $(IncludeSwitch)src $(IncludeSwitch)include $(IncludeSwitch)dll $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/bin $(IncludeSwitch). $(IncludeSwitch)src $(IncludeSwitch)include $(IncludeSwitch)dll $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/include $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/bin 
+IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch)src $(IncludeSwitch)include $(IncludeSwitch)dll $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/bin $(IncludeSwitch). $(IncludeSwitch)src $(IncludeSwitch)include $(IncludeSwitch)dll $(IncludeSwitch)fonts $(IncludeSwitch)textures $(IncludeSwitch)E:/Programming/C++/SFML-2.1/include $(IncludeSwitch)E:/Programming/C++/SFML-2.1/bin 
 IncludePCH             := 
-RcIncludePath          := 
+RcIncludePath          := $(IncludeSwitch)fonts $(IncludeSwitch)textures $(IncludeSwitch)src $(IncludeSwitch)include $(IncludeSwitch)dll 
 Libs                   := $(LibrarySwitch)sfml-graphics $(LibrarySwitch)sfml-window $(LibrarySwitch)sfml-system 
 ArLibs                 :=  "sfml-graphics" "sfml-window" "sfml-system" 
-LibPath                :=$(LibraryPathSwitch)Z:/Programming/C++/SFML-2.1/lib  $(LibraryPathSwitch). $(LibraryPathSwitch). $(LibraryPathSwitch)src $(LibraryPathSwitch)include $(LibraryPathSwitch)dll $(LibraryPathSwitch)Z:/Programming/C++/SFML-2.1/lib $(LibraryPathSwitch)Z:/Programming/C++/SFML-2.1/bin 
+LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch). $(LibraryPathSwitch)src $(LibraryPathSwitch)include $(LibraryPathSwitch)dll $(LibraryPathSwitch)fonts $(LibraryPathSwitch)textures $(LibraryPathSwitch)E:/Programming/C++/SFML-2.1/lib $(LibraryPathSwitch)E:/Programming/C++/SFML-2.1/bin 
 
 ##
 ## Common variables
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
-AR       := ar rcus
-CXX      := g++
-CC       := gcc
+AR       := E:\Programming\C++\MinGW-4.7.1\bin\ar rcus
+CXX      := E:\Programming\C++\MinGW-4.7.1\bin\g++
+CC       := E:\Programming\C++\MinGW-4.7.1\bin\gcc
 CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ASFLAGS  := 
-AS       := as
+AS       := E:\Programming\C++\MinGW-4.7.1\bin\as
 
 
 ##
 ## User defined environment variables
 ##
-CodeLiteDir:=Z:\Programming\C++\CodeLite
-UNIT_TEST_PP_SRC_DIR:=Z:\Programming\C++\CodeLite\UnitTest++-1.3
-Objects0=$(IntermediateDirectory)/main$(ObjectSuffix) 
+CodeLiteDir:=E:\Programming\C++\CodeLite
+UNIT_TEST_PP_SRC_DIR:=Z:\Programming\C++\UnitTest++-1.3
+Objects0=$(IntermediateDirectory)/main$(ObjectSuffix) $(IntermediateDirectory)/src_ResourceManager$(ObjectSuffix) $(IntermediateDirectory)/src_Utility$(ObjectSuffix) 
 
 
 
@@ -91,12 +91,28 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "Z:/Programming/GithubRepositories/Multiplayer_Bomberman/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "E:/Programming/GithubRepositories/Multiplayer_Bomberman/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main$(ObjectSuffix) -MF$(IntermediateDirectory)/main$(DependSuffix) -MM "main.cpp"
 
 $(IntermediateDirectory)/main$(PreprocessSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main$(PreprocessSuffix) "main.cpp"
+
+$(IntermediateDirectory)/src_ResourceManager$(ObjectSuffix): src/ResourceManager.cpp $(IntermediateDirectory)/src_ResourceManager$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "E:/Programming/GithubRepositories/Multiplayer_Bomberman/src/ResourceManager.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_ResourceManager$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_ResourceManager$(DependSuffix): src/ResourceManager.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_ResourceManager$(ObjectSuffix) -MF$(IntermediateDirectory)/src_ResourceManager$(DependSuffix) -MM "src/ResourceManager.cpp"
+
+$(IntermediateDirectory)/src_ResourceManager$(PreprocessSuffix): src/ResourceManager.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_ResourceManager$(PreprocessSuffix) "src/ResourceManager.cpp"
+
+$(IntermediateDirectory)/src_Utility$(ObjectSuffix): src/Utility.cpp $(IntermediateDirectory)/src_Utility$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "E:/Programming/GithubRepositories/Multiplayer_Bomberman/src/Utility.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_Utility$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_Utility$(DependSuffix): src/Utility.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_Utility$(ObjectSuffix) -MF$(IntermediateDirectory)/src_Utility$(DependSuffix) -MM "src/Utility.cpp"
+
+$(IntermediateDirectory)/src_Utility$(PreprocessSuffix): src/Utility.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_Utility$(PreprocessSuffix) "src/Utility.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
@@ -107,6 +123,12 @@ clean:
 	$(RM) $(IntermediateDirectory)/main$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/main$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/main$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/src_ResourceManager$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/src_ResourceManager$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/src_ResourceManager$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/src_Utility$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/src_Utility$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/src_Utility$(PreprocessSuffix)
 	$(RM) $(OutputFile)
 	$(RM) $(OutputFile).exe
 	$(RM) ".build-debug/Multiplayer_Bomberman"
