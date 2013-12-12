@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Zephilinox
-Date                   :=12/11/13
+Date                   :=12/12/13
 CodeLitePath           :="Z:\Programming\C++\CodeLite"
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -shared -fPIC
@@ -37,13 +37,13 @@ PCHCompileFlags        :=
 MakeDirCommand         :=makedir
 RcCmpOptions           := 
 RcCompilerName         :=windres
-LinkOptions            :=  
-IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
+LinkOptions            :=  -lsfml-graphics -lsfml-window -lsfml-system 
+IncludePath            := $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/include  $(IncludeSwitch). $(IncludeSwitch)src $(IncludeSwitch)include $(IncludeSwitch)dll $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/bin $(IncludeSwitch). $(IncludeSwitch)src $(IncludeSwitch)include $(IncludeSwitch)dll $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/include $(IncludeSwitch)Z:/Programming/C++/SFML-2.1/bin 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := 
-ArLibs                 :=  
-LibPath                := $(LibraryPathSwitch). 
+Libs                   := $(LibrarySwitch)sfml-graphics $(LibrarySwitch)sfml-window $(LibrarySwitch)sfml-system 
+ArLibs                 :=  "sfml-graphics" "sfml-window" "sfml-system" 
+LibPath                :=$(LibraryPathSwitch)Z:/Programming/C++/SFML-2.1/lib  $(LibraryPathSwitch). $(LibraryPathSwitch). $(LibraryPathSwitch)src $(LibraryPathSwitch)include $(LibraryPathSwitch)dll $(LibraryPathSwitch)Z:/Programming/C++/SFML-2.1/lib $(LibraryPathSwitch)Z:/Programming/C++/SFML-2.1/bin 
 
 ##
 ## Common variables

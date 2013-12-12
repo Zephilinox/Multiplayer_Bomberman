@@ -9,4 +9,7 @@
       <Project Name="Multiplayer_Bomberman" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
+  <Environment>
+    <![CDATA[]]>
+  </Environment>
 </CodeLite_Workspace>
