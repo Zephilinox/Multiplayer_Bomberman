@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1386967215 source:z:\programming\githubrepositories\multiplayer_bomberman\main.cpp
+1386971844 source:z:\programming\githubrepositories\multiplayer_bomberman\main.cpp
 	<iostream>
 	<string>
 	<sstream>
@@ -7,6 +7,7 @@
 	<SFML/Graphics.hpp>
 	"ResourceManager.hpp"
 	"Utility.hpp"
+	"Player.hpp"
 
 1367993678 z:\programming\c++\sfml-2.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -342,7 +343,7 @@
 	<string>
 	<vector>
 
-1386966614 z:\programming\githubrepositories\multiplayer_bomberman\include\resourcemanager.hpp
+1386967410 z:\programming\githubrepositories\multiplayer_bomberman\include\resourcemanager.hpp
 	<string>
 	<list>
 	<map>
@@ -821,4 +822,12 @@
 	<SFML/System/Time.hpp>
 	<vector>
 	<string>
+
+1386971188 z:\programming\githubrepositories\multiplayer_bomberman\include\player.hpp
+	<SFML/Graphics.hpp>
+	"ResourceManager.hpp"
+
+1386971284 source:z:\programming\githubrepositories\multiplayer_bomberman\src\player.cpp
+	"Player.hpp"
+	<iostream>
 

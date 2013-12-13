@@ -10,8 +10,11 @@
 //SELF
 #include "ResourceManager.hpp"
 #include "Utility.hpp"
+#include "Player.hpp"
 
 zge::ResourceManager ResMan;
+
+zge::Player ply1;
 
 int main(int argc, char **argv)
 {
@@ -132,6 +135,13 @@ int main(int argc, char **argv)
                 ResMan.sound("fireworks");
                 break;
             }
+            case sf::Event::MouseWheelMoved:
+            {
+                if (ResMan.music("background3").getVolume() + event.mouseWheel.delta >= 0 && ResMan.music("background3").getVolume() + event.mouseWheel.delta <= 100)
+                {
+                    ResMan.music("background3").setVolume(ResMan.music("background3").getVolume() + event.mouseWheel.delta);
+                }
+            }
 			default:
 			{
 
@@ -142,7 +152,7 @@ int main(int argc, char **argv)
 		fps.setPosition(672 - fps.getLocalBounds().width, 0);
 
         ResMan.Update();
-
+        ply1.update(collisionGrid);
 		//Draw
 
 		window.clear(sf::Color(40, 40, 40));
@@ -163,6 +173,7 @@ int main(int argc, char **argv)
 			}
 		}
 
+        window.draw(ply1);
 		window.draw(fps);
 		window.display();
 
