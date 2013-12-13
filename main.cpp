@@ -11,69 +11,71 @@
 #include "ResourceManager.hpp"
 #include "Utility.hpp"
 
+zge::ResourceManager ResMan;
+
 int main(int argc, char **argv)
 {
-	sf::RenderWindow window(sf::VideoMode(640, 640), "Hello");
-	window.setFramerateLimit(60);
-	
+    for (int i = 0; i < argc; ++i)
+    {
+        std::cout << argv[i] << "\n";
+    }
+
+	sf::RenderWindow window(sf::VideoMode(672, 672), "Hello");
+	//window.setFramerateLimit(60);
+
 	sf::Font arial;
 	arial.loadFromFile("fonts/arial.ttf");
-	
+
 	sf::Text fps;
 	fps.setFont(arial);
 	fps.setColor(sf::Color::White);
-	
-	sf::Texture tile;
-	tile.loadFromFile("textures/tile.png");
-	
-	sf::Texture tile2;
-	tile2.loadFromFile("textures/tile2.png");
-	
-	int collisionGrid [20][20] =
+
+	int collisionGrid [21][21] =
 	{
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	};
-	
-	for (int h = 0; h < 20; ++h)
+
+	for (int h = 0; h < 21; ++h)
 	{
 		collisionGrid[h][0] = 1;
-		collisionGrid[h][19] = 1;
+		collisionGrid[h][20] = 1;
 		collisionGrid[0][h] = 1;
-		collisionGrid[19][h] = 1;
-		
-		/*for (int w = 0; w < 20; ++w)
+		collisionGrid[20][h] = 1;
+
+		for (int w = 0; w < 21; ++w)
 		{
 			if (h % 2 == 0 && w % 2 == 0)
 			{
 				collisionGrid[h][w] = 1;
 			}
-		}*/
+		}
 	}
-	
+
 	//Map
-	sf::VertexArray map(sf::Quads, 1600);
-	for (int h = 0; h < 640/32; ++h)
+	sf::VertexArray map(sf::Quads, 21*21*4);
+	for (int h = 0; h < 672/32; ++h)
 	{
-		for (int w = 0; w < 640/32; ++w)
+		for (int w = 0; w < 672/32; ++w)
 		{
 			sf::Vertex TL;
 			//TL.color = sf::Color::Red;
@@ -81,21 +83,21 @@ int main(int argc, char **argv)
 			TL.texCoords = sf::Vector2f(0, 0);
 			TL.position = sf::Vector2f(w*32, h*32);
 			map.append(TL);
-			
+
 			sf::Vertex TR;
 			//TR.color = sf::Color::Green;
 			TR.color = sf::Color::White;
 			TR.texCoords = sf::Vector2f(32, 0);
 			TR.position = sf::Vector2f(w*32 + 32, h*32);
 			map.append(TR);
-			
+
 			sf::Vertex BR;
 			//BR.color = sf::Color::Blue;
 			BR.color = sf::Color::White;
 			BR.texCoords = sf::Vector2f(32, 32);
 			BR.position = sf::Vector2f(w*32 + 32, h*32 + 32);
 			map.append(BR);
-			
+
 			sf::Vertex BL;
 			//BL.color = sf::Color::Yellow;
 			BL.color = sf::Color::White;
@@ -104,11 +106,19 @@ int main(int argc, char **argv)
 			map.append(BL);
 		}
 	}
-		
+
+    sf::Sound fireworks(ResMan.sound("fireworks"));
+
 	sf::Clock clock;
 	sf::Time prevFrame;
 	while (window.isOpen())
 	{
+		if (window.getSize().x != window.getSize().y)
+		{
+			//window.setSize(sf::Vector2u((window.getSize().x + window.getSize().y) / 2, (window.getSize().x + window.getSize().y) / 2));
+			window.setSize(sf::Vector2u(window.getSize().y , window.getSize().y));
+		}
+
 		sf::Event event;
 		window.pollEvent(event);
 		switch(event.type)
@@ -116,53 +126,59 @@ int main(int argc, char **argv)
 			case sf::Event::Closed:
 			{
 				window.close();
+				break;
 			}
 			default:
 			{
-				
+
 			}
 		}
-		
+
 		//Update
-		fps.setPosition(640 - fps.getLocalBounds().width, 0);
-		
+		fps.setPosition(672 - fps.getLocalBounds().width, 0);
+
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        {
+            fireworks.play();
+        }
+
 		//Draw
 		//http://www.sfml-dev.org/tutorials/2.0/graphics-vertex-array.php
-		
+
 		window.clear(sf::Color(40, 40, 40));
-	
-		window.draw(map, &tile);
-		
-		for (int h = 0; h < 20; ++h)
+
+		window.draw(map, &ResMan.texture("tile"));
+
+		for (int h = 0; h < 21; ++h)
 		{
-			for (int w = 0; w < 20; ++w)
+			for (int w = 0; w < 21; ++w)
 			{
 				if (collisionGrid[h][w] == 1)
 				{
-					sf::Sprite s(tile2);
+					sf::Sprite s;
+					s.setTexture(ResMan.texture("tile2"));
 					s.setPosition(w*32, h*32);
 					window.draw(s);
 				}
 			}
 		}
-		
+
 		window.draw(fps);
-		
 		window.display();
-		
+
 		prevFrame = clock.restart();
-		fps.setString(zge::toString(1.f / prevFrame.asSeconds()));	
+		fps.setString(zge::toString(1.f / prevFrame.asSeconds()));
 	}
-	
-	for (int i = 0; i < 20; ++i)
+
+	for (int i = 0; i < 21; ++i)
 	{
-		for (int j = 0; j < 20; j++)
+		for (int j = 0; j < 21; j++)
 		{
 			std::cout << collisionGrid[i][j] << ", ";
 		}
-		
+
 		std::cout << "\n";
 	}
-	
+
 	return 0;
 }
