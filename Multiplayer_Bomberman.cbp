@@ -12,27 +12,53 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-pg" />
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add option="-pg -lgmon" />
+					<Add library="sfml-audio-d" />
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Multiplayer_Bomberman" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="sfml-audio" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="Z:/Programming/C++/SFML-2.1/include" />
+			<Add directory="src" />
+			<Add directory="include" />
 		</Compiler>
+		<Linker>
+			<Add directory="Z:/Programming/C++/SFML-2.1/lib" />
+		</Linker>
+		<Unit filename="include/ResourceManager.hpp" />
+		<Unit filename="include/Utility.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/ResourceManager.cpp" />
+		<Unit filename="src/Utility.cpp" />
+		<Unit filename="textures/tile-b.png" />
+		<Unit filename="textures/tile.png" />
+		<Unit filename="textures/tile2.png" />
+		<Unit filename="textures/tile4.png" />
 		<Extensions>
 			<code_completion />
 			<envvars />

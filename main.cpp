@@ -20,14 +20,11 @@ int main(int argc, char **argv)
         std::cout << argv[i] << "\n";
     }
 
-	sf::RenderWindow window(sf::VideoMode(672, 672), "Hello");
-	//window.setFramerateLimit(60);
-
-	sf::Font arial;
-	arial.loadFromFile("fonts/arial.ttf");
+	sf::RenderWindow window(sf::VideoMode(672, 672), "Bomberman");
+	window.setFramerateLimit(60);
 
 	sf::Text fps;
-	fps.setFont(arial);
+	fps.setFont(ResMan.font("arial"));
 	fps.setColor(sf::Color::White);
 
 	int collisionGrid [21][21] =
@@ -107,10 +104,12 @@ int main(int argc, char **argv)
 		}
 	}
 
-    sf::Sound fireworks(ResMan.sound("fireworks"));
+    ResMan.music("background3").setLoop(true);
+    ResMan.music("background3").play();
 
 	sf::Clock clock;
 	sf::Time prevFrame;
+
 	while (window.isOpen())
 	{
 		if (window.getSize().x != window.getSize().y)
@@ -128,6 +127,11 @@ int main(int argc, char **argv)
 				window.close();
 				break;
 			}
+			case sf::Event::MouseButtonPressed:
+            {
+                ResMan.sound("fireworks");
+                break;
+            }
 			default:
 			{
 
@@ -137,17 +141,13 @@ int main(int argc, char **argv)
 		//Update
 		fps.setPosition(672 - fps.getLocalBounds().width, 0);
 
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {
-            fireworks.play();
-        }
+        ResMan.Update();
 
 		//Draw
-		//http://www.sfml-dev.org/tutorials/2.0/graphics-vertex-array.php
 
 		window.clear(sf::Color(40, 40, 40));
 
-		window.draw(map, &ResMan.texture("tile"));
+		window.draw(map, &(ResMan.texture("tile")));
 
 		for (int h = 0; h < 21; ++h)
 		{
