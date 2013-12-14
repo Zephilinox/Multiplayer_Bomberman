@@ -50,11 +50,16 @@
 		<Linker>
 			<Add directory="Z:/Programming/C++/SFML-2.1/lib" />
 		</Linker>
+		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/ResourceManager.hpp" />
 		<Unit filename="include/Utility.hpp" />
+		<Unit filename="include/World.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
 		<Unit filename="src/Utility.cpp" />
+		<Unit filename="src/World.cpp" />
+		<Unit filename="textures/Yellow.png" />
 		<Unit filename="textures/tile-b.png" />
 		<Unit filename="textures/tile.png" />
 		<Unit filename="textures/tile2.png" />
