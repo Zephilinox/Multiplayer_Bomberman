@@ -21,4 +21,5 @@
 *.app
 
 bin/*
+obj/*
 gmon.out

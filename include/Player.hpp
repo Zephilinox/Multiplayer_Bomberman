@@ -20,7 +20,8 @@ public:
 private:
     sf::Sprite m_Sprite;
     ResourceManager m_ResMan;
-    sf::Clock m_MoveTimer;
+    sf::Vector2f m_Source;
+    sf::Vector2f m_Destination;
 };
 
 } //Namespace zge
