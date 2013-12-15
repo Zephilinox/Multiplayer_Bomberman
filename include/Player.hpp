@@ -22,6 +22,9 @@ private:
     ResourceManager m_ResMan;
     sf::Vector2f m_Source;
     sf::Vector2f m_Destination;
+    sf::RectangleShape m_SourceTile;
+    sf::RectangleShape m_DestinationTile;
+    sf::RectangleShape m_SpriteTile;
 };
 
 } //Namespace zge

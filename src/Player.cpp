@@ -12,10 +12,22 @@ Player::Player()
     m_Sprite.setPosition(32, 32);
     m_Destination = m_Sprite.getPosition();
     m_Source = m_Sprite.getPosition();
+
+    m_SourceTile.setPosition(32, 32);
+    m_SourceTile.setSize(sf::Vector2f(32, 32));
+    m_DestinationTile = m_SourceTile;
+    m_SpriteTile = m_SourceTile;
+
+    m_SourceTile.setFillColor(sf::Color(0, 0, 255, 85));
+    m_DestinationTile.setFillColor(sf::Color(255, 0, 0, 85));
+    m_SpriteTile.setFillColor(sf::Color(0, 255, 0, 85));
 }
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+    target.draw(m_SourceTile, states);
+    target.draw(m_DestinationTile, states);
+    target.draw(m_SpriteTile, states);
     target.draw(m_Sprite, states);
 }
 
@@ -97,6 +109,16 @@ void Player::update(sf::Time delta, int collisionGrid[21][21])
         m_Destination = m_Source;
     }
 
+    if (collisionGrid[int((m_Sprite.getPosition().x + 16) / 32)][int(m_Source.y/32)] == 1)
+    {
+        m_Destination.x = m_Source.x;
+    }
+
+    if (collisionGrid[int(m_Source.x/32)][int((m_Sprite.getPosition().y + 16) / 32)] == 1)
+    {
+        m_Destination.y = m_Source.y;
+    }
+
     if (m_Destination.x >= m_Sprite.getPosition().x - 1 && m_Destination.x <= m_Sprite.getPosition().x + 1) //If sprite xpos is within x destination by small error
     {
         if (m_Destination.y >= m_Sprite.getPosition().y - 1 && m_Destination.y <= m_Sprite.getPosition().y + 1) //If sprite ypos is within y destination by small error
@@ -123,6 +145,10 @@ void Player::update(sf::Time delta, int collisionGrid[21][21])
         std::cout << m_Destination.x << ":" << m_Destination.y << "\n";
         std::cout << direction.x * 64.f * delta.asSeconds() << ":" << direction.y * 64.f * delta.asSeconds() << "\n";
     }
+
+    m_SourceTile.setPosition(m_Source);
+    m_DestinationTile.setPosition(m_Destination);
+    m_SpriteTile.setPosition(int((m_Sprite.getPosition().x + 16) / 32) * 32, int((m_Sprite.getPosition().y + 16) / 32) * 32);
 }
 
 } //Namespace zge
