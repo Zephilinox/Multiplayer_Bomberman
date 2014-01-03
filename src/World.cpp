@@ -48,7 +48,7 @@ World::World()
 
 		for (int w = 0; w < 21; ++w)
 		{
-			if (h % 2 == 0 && w % 2 == 0)
+			if (h % 3 == 0 && w % 3 == 0)
 			{
 				m_CollisionGrid[h][w] = 1;
 			}

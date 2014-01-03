@@ -12,6 +12,7 @@
 #include "Utility.hpp"
 #include "Player.hpp"
 #include "World.hpp"
+#include "Button.hpp"
 
 zge::ResourceManager ResMan;
 
@@ -39,12 +40,6 @@ int main(int argc, char **argv)
 
 	while (window.isOpen())
 	{
-		if (window.getSize().x != window.getSize().y)
-		{
-			//window.setSize(sf::Vector2u((window.getSize().x + window.getSize().y) / 2, (window.getSize().x + window.getSize().y) / 2));
-			window.setSize(sf::Vector2u(window.getSize().y , window.getSize().y));
-		}
-
 		sf::Event event;
 		window.pollEvent(event);
 		switch(event.type)
@@ -54,37 +49,54 @@ int main(int argc, char **argv)
 				window.close();
 				break;
 			}
-			case sf::Event::MouseButtonPressed:
-            {
-                //ResMan.sound("fireworks");
-                break;
-            }
-            case sf::Event::MouseWheelMoved:
-            {
-                if (ResMan.music("background3").getVolume() + event.mouseWheel.delta >= 0 && ResMan.music("background3").getVolume() + event.mouseWheel.delta <= 100)
-                {
-                    ResMan.music("background3").setVolume(ResMan.music("background3").getVolume() + event.mouseWheel.delta);
-                }
-            }
 			default:
 			{
-
 			}
 		}
 
 		//Update
 		fps.setPosition(672 - fps.getLocalBounds().width, 0);
 
-        world.update(prevFrame);
+        /*world.update(prevFrame);
 
-        ResMan.Update();
+        ResMan.Update();*/
 		//Draw
 
 		window.clear(sf::Color(40, 40, 40));
 
-        window.draw(world.getLevelFloor(), &ResMan.texture("tile"));
-        window.draw(world);
+        Button newGame("button");
+        newGame.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 500));
+        newGame.setString("Continue Game");
+        newGame.setCharacterSize(28);
 
+        Button newGame1("button");
+        newGame1.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 400));
+        newGame1.setString("New Game");
+        newGame1.setCharacterSize(28);
+
+        Button newGame2("button");
+        newGame2.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 300));
+        newGame2.setString("Load Game");
+        newGame2.setCharacterSize(28);
+
+        Button newGame3("button");
+        newGame3.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 200));
+        newGame3.setString("Multiplayer Game");
+        newGame3.setCharacterSize(28);
+
+        Button newGame4("button");
+        newGame4.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 100));
+        newGame4.setString("Options");
+        newGame4.setCharacterSize(28);
+
+        /*window.draw(world.getLevelFloor(), &ResMan.texture("tile"));
+        window.draw(world);*/
+
+        window.draw(newGame);
+        window.draw(newGame1);
+        window.draw(newGame2);
+        window.draw(newGame3);
+        window.draw(newGame4);
 		window.draw(fps);
 		window.display();
 
