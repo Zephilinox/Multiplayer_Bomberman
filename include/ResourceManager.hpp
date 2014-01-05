@@ -39,6 +39,6 @@ private:
     static std::list<sf::Sound> m_Sounds; //Adding & Deleting elements in a vector causes other elements to be moved and copied. Need to use list due to OpenAL.
 };
 
-} //Namespace zge
+} //ZGE
 
 #endif // RESOURCEMANAGER_HPP

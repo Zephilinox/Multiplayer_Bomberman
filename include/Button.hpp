@@ -9,16 +9,18 @@
 //SELF
 #include "ResourceManager.hpp"
 
+namespace zge
+{
+
 class Button : public sf::Drawable
 {
 public:
     Button(std::string textureName);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    void update();
+    void update(sf::RenderWindow& window);
     void setCharacterSize(unsigned int x);
     void setString(std::string str);
 
-    bool isMouseOn();
     bool mouseClicked();
 
     sf::Vector2u getSize();
@@ -29,7 +31,9 @@ private:
 
     bool m_MouseClicked;
 
-    static zge::ResourceManager m_ResMan;
+    static ResourceManager m_ResMan;
 };
+
+} //ZGE
 
 #endif // BUTTON_HPP

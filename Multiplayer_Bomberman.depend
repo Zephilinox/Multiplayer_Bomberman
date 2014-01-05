@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1388772682 source:z:\programming\githubrepositories\multiplayer_bomberman\main.cpp
+1388919356 source:z:\programming\githubrepositories\multiplayer_bomberman\main.cpp
 	<iostream>
 	<string>
 	<sstream>
@@ -10,6 +10,7 @@
 	"Player.hpp"
 	"World.hpp"
 	"Button.hpp"
+	"MenuState.hpp"
 
 1367993678 z:\programming\c++\sfml-2.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -345,7 +346,7 @@
 	<string>
 	<vector>
 
-1387050691 z:\programming\githubrepositories\multiplayer_bomberman\include\resourcemanager.hpp
+1388913331 z:\programming\githubrepositories\multiplayer_bomberman\include\resourcemanager.hpp
 	<string>
 	<list>
 	<map>
@@ -420,7 +421,7 @@
 1386847699 source:z:\programming\githubrepositories\multiplayer_bomberman\src\utility.cpp
 	"Utility.hpp"
 
-1387050692 source:z:\programming\githubrepositories\multiplayer_bomberman\src\resourcemanager.cpp
+1388913336 source:z:\programming\githubrepositories\multiplayer_bomberman\src\resourcemanager.cpp
 	"ResourceManager.hpp"
 	<cassert>
 	<iostream>
@@ -826,11 +827,11 @@
 	<vector>
 	<string>
 
-1387116202 z:\programming\githubrepositories\multiplayer_bomberman\include\player.hpp
+1388913590 z:\programming\githubrepositories\multiplayer_bomberman\include\player.hpp
 	<SFML/Graphics.hpp>
 	"ResourceManager.hpp"
 
-1387119110 source:z:\programming\githubrepositories\multiplayer_bomberman\src\player.cpp
+1388913325 source:z:\programming\githubrepositories\multiplayer_bomberman\src\player.cpp
 	"Player.hpp"
 	<iostream>
 	<cmath>
@@ -838,15 +839,15 @@
 1387109592 source:z:\programming\githubrepositories\multiplayer_bomberman\src\world.cpp
 	"World.hpp"
 
-1387059329 z:\programming\githubrepositories\multiplayer_bomberman\include\world.hpp
+1388913595 z:\programming\githubrepositories\multiplayer_bomberman\include\world.hpp
 	<SFML/Graphics.hpp>
 	"ResourceManager.hpp"
 	"Player.hpp"
 
-1388772717 source:z:\programming\githubrepositories\multiplayer_bomberman\src\button.cpp
+1388914365 source:z:\programming\githubrepositories\multiplayer_bomberman\src\button.cpp
 	"Button.hpp"
 
-1388772648 z:\programming\githubrepositories\multiplayer_bomberman\include\button.hpp
+1388913384 z:\programming\githubrepositories\multiplayer_bomberman\include\button.hpp
 	<SFML/Graphics.hpp>
 	"ResourceManager.hpp"
 
@@ -854,4 +855,26 @@
 	"Menu.hpp"
 
 1388770247 z:\programming\githubrepositories\multiplayer_bomberman\include\menu.hpp
+
+1388914038 source:z:\programming\githubrepositories\multiplayer_bomberman\src\state.cpp
+	"State.hpp"
+
+1388919184 z:\programming\githubrepositories\multiplayer_bomberman\include\state.hpp
+	<SFML/Graphics.hpp>
+
+1388919349 source:z:\programming\githubrepositories\multiplayer_bomberman\src\menustate.cpp
+	"MenuState.hpp"
+	<iostream>
+	"Button.hpp"
+
+1388919210 z:\programming\githubrepositories\multiplayer_bomberman\include\menustate.hpp
+	"State.hpp"
+	"Button.hpp"
+
+1388915425 source:z:\programming\githubrepositories\multiplayer_bomberman\src\statemanager.cpp
+	"StateManager.hpp"
+
+1388918550 z:\programming\githubrepositories\multiplayer_bomberman\include\statemanager.hpp
+	<vector>
+	"State.hpp"
 

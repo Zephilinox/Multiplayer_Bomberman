@@ -13,6 +13,7 @@
 #include "Player.hpp"
 #include "World.hpp"
 #include "Button.hpp"
+#include "MenuState.hpp"
 
 zge::ResourceManager ResMan;
 
@@ -40,63 +41,42 @@ int main(int argc, char **argv)
 
 	while (window.isOpen())
 	{
+	    MenuState menuState;
+
 		sf::Event event;
-		window.pollEvent(event);
-		switch(event.type)
+		while (window.pollEvent(event))
 		{
-			case sf::Event::Closed:
-			{
-				window.close();
-				break;
-			}
-			default:
-			{
-			}
+            switch(event.type)
+            {
+                case sf::Event::Closed:
+                {
+                    window.close();
+                    break;
+                }
+                default:
+                {
+                }
+            }
+
+            menuState.handleEvent(event, window);
 		}
 
 		//Update
-		fps.setPosition(672 - fps.getLocalBounds().width, 0);
+		/*fps.setPosition(672 - fps.getLocalBounds().width, 0);
 
-        /*world.update(prevFrame);
+        world.update(prevFrame);
 
         ResMan.Update();*/
+
+        menuState.update(window, sf::Time::Zero);
+
 		//Draw
-
 		window.clear(sf::Color(40, 40, 40));
-
-        Button newGame("button");
-        newGame.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 500));
-        newGame.setString("Continue Game");
-        newGame.setCharacterSize(28);
-
-        Button newGame1("button");
-        newGame1.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 400));
-        newGame1.setString("New Game");
-        newGame1.setCharacterSize(28);
-
-        Button newGame2("button");
-        newGame2.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 300));
-        newGame2.setString("Load Game");
-        newGame2.setCharacterSize(28);
-
-        Button newGame3("button");
-        newGame3.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 200));
-        newGame3.setString("Multiplayer Game");
-        newGame3.setCharacterSize(28);
-
-        Button newGame4("button");
-        newGame4.setPosition(sf::Vector2f(674/2 - newGame.getSize().x/2, 674 - newGame.getSize().y - 100));
-        newGame4.setString("Options");
-        newGame4.setCharacterSize(28);
 
         /*window.draw(world.getLevelFloor(), &ResMan.texture("tile"));
         window.draw(world);*/
 
-        window.draw(newGame);
-        window.draw(newGame1);
-        window.draw(newGame2);
-        window.draw(newGame3);
-        window.draw(newGame4);
+        menuState.draw(window, sf::Time::Zero);
 		window.draw(fps);
 		window.display();
 

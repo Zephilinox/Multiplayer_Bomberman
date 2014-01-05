@@ -21,7 +21,7 @@ private:
     sf::VertexArray m_LevelFloor;
     sf::RenderTexture m_World;
     mutable zge::ResourceManager m_ResMan;
-    zge::Player m_Player1;
+    Player m_Player1;
 	int m_CollisionGrid [21][21] =
 	{
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},

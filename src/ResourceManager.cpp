@@ -134,5 +134,5 @@ void ResourceManager::animation()
 	assert(false);
 }
 
-} //Namespace zge
+} //ZGE
 

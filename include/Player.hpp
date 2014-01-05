@@ -7,9 +7,6 @@
 //SELF
 #include "ResourceManager.hpp"
 
-namespace zge
-{
-
 class Player : public sf::Drawable
 {
 public:
@@ -19,7 +16,8 @@ public:
     //Need to change how it moves, either by making it more free-form (thus allowing explosions to clip you) or using a cur/target pos with update() making the sprite move between them like blastorium.
 private:
     sf::Sprite m_Sprite;
-    ResourceManager m_ResMan;
+    zge::ResourceManager m_ResMan;
+
     sf::Vector2f m_Velocity;
     sf::Vector2f m_Source;
     sf::Vector2f m_Destination;
@@ -28,8 +26,5 @@ private:
     sf::RectangleShape m_DestinationTile;
     sf::RectangleShape m_SpriteTile;
 };
-
-} //Namespace zge
-
 
 #endif // PLAYER_HPP

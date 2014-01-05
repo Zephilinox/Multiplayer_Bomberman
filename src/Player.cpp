@@ -3,9 +3,6 @@
 #include <iostream>
 #include <cmath>
 
-namespace zge
-{
-
 Player::Player()
 {
     m_Sprite.setTexture(m_ResMan.texture("Yellow"));
@@ -37,5 +34,3 @@ void Player::update(sf::Time delta, int collisionGrid[21][21])
 {
 
 }
-
-} //Namespace zge
