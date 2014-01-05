@@ -32,5 +32,31 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Player::update(sf::Time delta, int collisionGrid[21][21])
 {
+    if (m_MoveTimer.getElapsedTime().asSeconds() > 0.1)
+    {
+        m_MoveTimer.restart();
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            m_Velocity.y -= 32;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            m_Velocity.y += 32;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            m_Velocity.x -= 32;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            m_Velocity.x += 32;
+        }
+
+        m_Sprite.move(m_Velocity.x, m_Velocity.y);
+        m_Velocity = sf::Vector2f(0, 0);
+    }
 }

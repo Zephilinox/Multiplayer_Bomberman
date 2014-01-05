@@ -50,34 +50,18 @@ void MenuState::handleEvent(sf::Event& event, sf::RenderWindow& window)
 
 void MenuState::update(sf::RenderWindow& window, const sf::Time& delta)
 {
-    if (!m_Paused)
-    {
-        m_newGame.update(window);
-        m_newGame1.update(window);
-        m_newGame2.update(window);
-        m_newGame3.update(window);
-        m_newGame4.update(window);
-    }
+    m_newGame.update(window);
+    m_newGame1.update(window);
+    m_newGame2.update(window);
+    m_newGame3.update(window);
+    m_newGame4.update(window);
 }
 
-void MenuState::draw(sf::RenderWindow& window, const sf::Time& delta)
+void MenuState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    if (!m_Paused)
-    {
-        window.draw(m_newGame);
-        window.draw(m_newGame1);
-        window.draw(m_newGame2);
-        window.draw(m_newGame3);
-        window.draw(m_newGame4);
-    }
-}
-
-void MenuState::pause()
-{
-    m_Paused = true;
-}
-
-void MenuState::resume()
-{
-    m_Paused = false;
+    target.draw(m_newGame, states);
+    target.draw(m_newGame1, states);
+    target.draw(m_newGame2, states);
+    target.draw(m_newGame3, states);
+    target.draw(m_newGame4, states);
 }

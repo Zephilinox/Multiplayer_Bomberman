@@ -1,9 +1,6 @@
-#include "World.hpp"
+#include "GameState.hpp"
 
-namespace zge
-{
-
-World::World()
+GameState::GameState()
 {
 	sf::VertexArray floor(sf::Quads, 21*21*4);
 	m_LevelFloor.setPrimitiveType(sf::Quads);
@@ -56,17 +53,22 @@ World::World()
 	}
 }
 
-void World::update(sf::Time delta)
+void GameState::handleEvent(sf::Event& event, sf::RenderWindow& window)
+{
+
+}
+
+void GameState::update(sf::RenderWindow& window, const sf::Time& delta)
 {
     m_Player1.update(delta, m_CollisionGrid);
 }
 
-sf::VertexArray World::getLevelFloor()
+sf::VertexArray GameState::getLevelFloor()
 {
     return m_LevelFloor;
 }
 
-void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     for (int h = 0; h < 21; ++h)
     {
@@ -84,5 +86,3 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
     target.draw(m_Player1, states);
 }
-
-} //Namespace zge

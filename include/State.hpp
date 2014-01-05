@@ -11,7 +11,7 @@
 namespace zge
 {
 
-class State
+class State : public sf::Drawable
 {
 public:
     State() = default;
@@ -19,10 +19,7 @@ public:
 
     virtual void handleEvent(sf::Event& event, sf::RenderWindow& window) = 0;
     virtual void update(sf::RenderWindow& window, const sf::Time& delta) = 0;
-    virtual void draw(sf::RenderWindow& window, const sf::Time& delta) = 0;
-
-    virtual void pause() = 0;
-    virtual void resume() = 0;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
 };
 
 } //ZGE

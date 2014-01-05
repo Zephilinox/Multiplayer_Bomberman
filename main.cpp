@@ -11,13 +11,14 @@
 #include "ResourceManager.hpp"
 #include "Utility.hpp"
 #include "Player.hpp"
-#include "World.hpp"
+#include "GameState.hpp"
 #include "Button.hpp"
 #include "MenuState.hpp"
 
 zge::ResourceManager ResMan;
 
-zge::World world;
+GameState gameState;
+MenuState menuState;
 
 int main(int argc, char **argv)
 {
@@ -26,6 +27,7 @@ int main(int argc, char **argv)
         std::cout << argv[i] << "\n";
     }
 
+    //Initialise
 	sf::RenderWindow window(sf::VideoMode(672, 672), "Bomberman");
 	window.setFramerateLimit(60);
 
@@ -41,8 +43,6 @@ int main(int argc, char **argv)
 
 	while (window.isOpen())
 	{
-	    MenuState menuState;
-
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -62,21 +62,19 @@ int main(int argc, char **argv)
 		}
 
 		//Update
-		/*fps.setPosition(672 - fps.getLocalBounds().width, 0);
-
-        world.update(prevFrame);
-
-        ResMan.Update();*/
-
+		fps.setPosition(672 - fps.getLocalBounds().width, 0);
+        gameState.update(window, prevFrame);
+        ResMan.Update();
         menuState.update(window, sf::Time::Zero);
 
 		//Draw
 		window.clear(sf::Color(40, 40, 40));
 
-        /*window.draw(world.getLevelFloor(), &ResMan.texture("tile"));
-        window.draw(world);*/
+        window.draw(gameState.getLevelFloor(), &ResMan.texture("tile"));
+        window.draw(gameState);
 
-        menuState.draw(window, sf::Time::Zero);
+        window.draw(menuState);
+
 		window.draw(fps);
 		window.display();
 

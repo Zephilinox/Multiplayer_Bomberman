@@ -15,17 +15,13 @@ public:
     MenuState();
     virtual void handleEvent(sf::Event& event, sf::RenderWindow& window);
     virtual void update(sf::RenderWindow& window, const sf::Time& delta);
-    virtual void draw(sf::RenderWindow& window, const sf::Time& delta);
-    virtual void pause();
-    virtual void resume();
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
     zge::Button m_newGame;
     zge::Button m_newGame1;
     zge::Button m_newGame2;
     zge::Button m_newGame3;
     zge::Button m_newGame4;
-
-    bool m_Paused = false;
 };
 
 #endif // MENUSTATE_HPP

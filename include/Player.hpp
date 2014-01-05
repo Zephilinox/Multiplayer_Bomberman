@@ -25,6 +25,8 @@ private:
     sf::RectangleShape m_SourceTile;
     sf::RectangleShape m_DestinationTile;
     sf::RectangleShape m_SpriteTile;
+
+    sf::Clock m_MoveTimer;
 };
 
 #endif // PLAYER_HPP

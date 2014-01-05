@@ -1,21 +1,25 @@
 #ifndef WORLD_HPP
 #define WORLD_HPP
 
+//STD
+
+//3RD
 #include <SFML/Graphics.hpp>
 
+//SELF
 #include "ResourceManager.hpp"
 #include "Player.hpp"
+#include "State.hpp"
 
-namespace zge
-{
-
-class World : public sf::Drawable
+class GameState : public zge::State
 {
 public:
-    World();
-    void update(sf::Time delta);
-    sf::VertexArray getLevelFloor();
+    GameState();
+    virtual void handleEvent(sf::Event& event, sf::RenderWindow& window);
+    virtual void update(sf::RenderWindow& window, const sf::Time& delta);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    sf::VertexArray getLevelFloor();
 
 private:
     sf::VertexArray m_LevelFloor;
@@ -48,6 +52,4 @@ private:
 	};
 };
 
-} //Namespace zg
-
-#endif // WORLD_HPP
+#endif // GAMESTATE_HPP
