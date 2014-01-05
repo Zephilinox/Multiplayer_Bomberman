@@ -8,6 +8,8 @@
 
 //SELF
 #include "State.hpp"
+#include "GameState.hpp"
+#include "MenuState.hpp"
 
 namespace zge
 {
@@ -16,8 +18,13 @@ class StateManager
 {
 public:
     StateManager();
+    void addState(StateID s);
+    void changeState(StateID s);
+    void deleteState(StateID s);
+    State& getActiveState();
 private:
-    std::vector<State> m_States;
+    static std::vector<State> m_States;
+    static unsigned int m_ActiveStatePosition;
 };
 
 } //ZGE

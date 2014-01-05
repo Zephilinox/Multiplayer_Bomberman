@@ -1,5 +1,5 @@
-#ifndef GAMESTATE_HPP
-#define GAMESTATE_HPP
+#ifndef WORLD_HPP
+#define WORLD_HPP
 
 //STD
 
@@ -9,15 +9,15 @@
 //SELF
 #include "ResourceManager.hpp"
 #include "Player.hpp"
-#include "State.hpp"
 
-class GameState : public zge::State
+class World
 {
 public:
-    GameState();
-    virtual void handleEvent(sf::Event& event, sf::RenderWindow& window);
-    virtual void update(sf::RenderWindow& window, const sf::Time& delta);
+    World();
+    void update(const sf::Time& delta);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    sf::VertexArray& getLevelFloor();
 
 private:
     sf::VertexArray m_LevelFloor;
@@ -50,4 +50,4 @@ private:
 	};
 };
 
-#endif // GAMESTATE_HPP
+#endif // WORLD_HPP

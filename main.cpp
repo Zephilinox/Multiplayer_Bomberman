@@ -14,14 +14,15 @@
 #include "GameState.hpp"
 #include "Button.hpp"
 #include "MenuState.hpp"
+#include "StateManager.hpp"
 
 zge::ResourceManager ResMan;
-
-GameState gameState;
-MenuState menuState;
+zge::StateManager StateMan;
 
 int main(int argc, char **argv)
 {
+    std::cout << "###Main###\n";
+
     for (int i = 0; i < argc; ++i)
     {
         std::cout << argv[i] << "\n";
@@ -37,6 +38,11 @@ int main(int argc, char **argv)
 
     //ResMan.music("background3").setLoop(true);
     //ResMan.music("background3").play();
+
+    //StateMan.addState(zge::StateID::MenuState);
+    //StateMan.getActiveState().print();
+    StateMan.addState(zge::StateID::GameState);
+    StateMan.getActiveState().print();
 
 	sf::Clock clock;
 	sf::Time prevFrame;
@@ -58,22 +64,19 @@ int main(int argc, char **argv)
                 }
             }
 
-            menuState.handleEvent(event, window);
+            StateMan.getActiveState().handleEvent(event, window);
 		}
 
 		//Update
 		fps.setPosition(672 - fps.getLocalBounds().width, 0);
-        gameState.update(window, prevFrame);
-        ResMan.Update();
-        menuState.update(window, sf::Time::Zero);
+		ResMan.Update();
+
+        StateMan.getActiveState().update(window, prevFrame);
 
 		//Draw
 		window.clear(sf::Color(40, 40, 40));
 
-        window.draw(gameState.getLevelFloor(), &ResMan.texture("tile"));
-        window.draw(gameState);
-
-        window.draw(menuState);
+        window.draw(StateMan.getActiveState());
 
 		window.draw(fps);
 		window.display();

@@ -1,9 +1,7 @@
-#include "GameState.hpp"
+#include "World.hpp"
 
-GameState::GameState()
+World::World()
 {
-    stateID = zge::StateID::GameState;
-
 	sf::VertexArray floor(sf::Quads, 21*21*4);
 	m_LevelFloor.setPrimitiveType(sf::Quads);
 	m_LevelFloor.resize(21*21*4);
@@ -55,20 +53,18 @@ GameState::GameState()
 	}
 }
 
-void GameState::handleEvent(sf::Event& event, sf::RenderWindow& window)
-{
-
-}
-
-void GameState::update(sf::RenderWindow& window, const sf::Time& delta)
+void World::update(const sf::Time& delta)
 {
     m_Player1.update(delta, m_CollisionGrid);
 }
 
-void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
+sf::VertexArray& World::getLevelFloor()
 {
-    target.draw(m_LevelFloor, states);
+    return m_LevelFloor;
+}
 
+void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
     for (int h = 0; h < 21; ++h)
     {
         for (int w = 0; w < 21; ++w)

@@ -15,6 +15,8 @@ m_newGame2(zge::Button("button")),
 m_newGame3(zge::Button("button")),
 m_newGame4(zge::Button("button"))
 {
+    stateID = zge::StateID::MenuState;
+
     m_newGame.setPosition(sf::Vector2f(674/2 - m_newGame.getSize().x/2, 674 - m_newGame.getSize().y - 500));
     m_newGame.setString("Continue Game");
     m_newGame.setCharacterSize(28);
