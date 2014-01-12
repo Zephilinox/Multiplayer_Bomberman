@@ -15,7 +15,8 @@ m_newGame2(zge::Button("button")),
 m_newGame3(zge::Button("button")),
 m_newGame4(zge::Button("button"))
 {
-    stateID = zge::StateID::MenuState;
+    this->stateID = zge::StateID::MenuState;
+    this->targetState = this->stateID;
 
     m_newGame.setPosition(sf::Vector2f(674/2 - m_newGame.getSize().x/2, 674 - m_newGame.getSize().y - 500));
     m_newGame.setString("Continue Game");
@@ -57,6 +58,15 @@ void MenuState::update(sf::RenderWindow& window, const sf::Time& delta)
     m_newGame2.update(window);
     m_newGame3.update(window);
     m_newGame4.update(window);
+
+    if (m_newGame1.mouseClicked())
+    {
+        this->targetState = zge::StateID::GameState;
+    }
+    else
+    {
+        this->targetState = this->stateID;
+    }
 }
 
 void MenuState::draw(sf::RenderTarget& target, sf::RenderStates states) const

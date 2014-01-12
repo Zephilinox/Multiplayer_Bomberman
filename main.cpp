@@ -29,8 +29,8 @@ int main(int argc, char **argv)
     }
 
     //Initialise
-	sf::RenderWindow window(sf::VideoMode(672, 672), "Bomberman");
-	window.setFramerateLimit(60);
+	sf::RenderWindow window(sf::VideoMode(704, 704), "Bomberman");
+	//window.setFramerateLimit(60);
 
 	sf::Text fps;
 	fps.setFont(ResMan.font("arial"));
@@ -39,10 +39,8 @@ int main(int argc, char **argv)
     //ResMan.music("background3").setLoop(true);
     //ResMan.music("background3").play();
 
-    //StateMan.addState(zge::StateID::MenuState);
-    //StateMan.getActiveState().print();
+    StateMan.addState(zge::StateID::MenuState);
     StateMan.addState(zge::StateID::GameState);
-    StateMan.getActiveState().print();
 
 	sf::Clock clock;
 	sf::Time prevFrame;

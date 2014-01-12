@@ -12,13 +12,15 @@ class Player : public sf::Drawable
 public:
     Player();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    void update(sf::Time dleta, int collisionGrid[21][21]); //Make some kind of Level manager so that the player can check with them rather than have the direct array
-    //Need to change how it moves, either by making it more free-form (thus allowing explosions to clip you) or using a cur/target pos with update() making the sprite move between them like blastorium.
+    void handleEvent(sf::Event& event);
+    void update(sf::Time dleta, std::vector<std::vector<int>> collisionGrid);
+    void useWASD();
+    void useArrows();
 private:
     sf::Sprite m_Sprite;
     zge::ResourceManager m_ResMan;
+    unsigned int m_Acceleration = 9; //Increment by 1.5 up to 6 times (max of 9)
 
-    sf::Vector2f m_Velocity;
     sf::Vector2f m_Source;
     sf::Vector2f m_Destination;
     sf::Vector2f m_TilePosition;
@@ -27,6 +29,12 @@ private:
     sf::RectangleShape m_SpriteTile;
 
     sf::Clock m_MoveTimer;
+
+    sf::Keyboard::Key m_LastKeyPressed = sf::Keyboard::Key::Unknown;
+    sf::Keyboard::Key m_Up = sf::Keyboard::Key::Unknown;
+    sf::Keyboard::Key m_Left = sf::Keyboard::Key::Unknown;
+    sf::Keyboard::Key m_Down = sf::Keyboard::Key::Unknown;
+    sf::Keyboard::Key m_Right = sf::Keyboard::Key::Unknown;
 };
 
 #endif // PLAYER_HPP

@@ -45,12 +45,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="Z:/Programming/C++/SFML-2.1/include" />
+			<Add directory="E:/Programming/C++/SFML-2.1/include" />
 			<Add directory="src" />
 			<Add directory="include" />
 		</Compiler>
 		<Linker>
-			<Add directory="Z:/Programming/C++/SFML-2.1/lib" />
+			<Add directory="E:/Programming/C++/SFML-2.1/lib" />
 		</Linker>
 		<Unit filename="include/Button.hpp" />
 		<Unit filename="include/GameState.hpp" />

@@ -1,5 +1,8 @@
 #include "Button.hpp"
 
+//STD
+#include <iostream>
+
 namespace zge
 {
 
@@ -26,6 +29,11 @@ void Button::update(sf::RenderWindow& window)
         sf::Mouse::getPosition(window).y < m_Sprite.getPosition().y + this->getSize().y)
         {
             m_Text.setColor(sf::Color(255, 180, 0));
+
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                m_MouseClicked = true;
+            }
         }
         else
         {
@@ -37,6 +45,10 @@ void Button::update(sf::RenderWindow& window)
         m_Text.setColor(sf::Color::White);
     }
 
+    if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        m_MouseClicked = false;
+    }
 }
 
 void Button::setCharacterSize(unsigned int x)
@@ -54,7 +66,7 @@ void Button::setString(std::string str)
 
 bool Button::mouseClicked()
 {
-    return false;
+    return m_MouseClicked;
 }
 
 sf::Vector2u Button::getSize()

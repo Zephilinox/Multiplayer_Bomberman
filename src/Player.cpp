@@ -18,8 +18,6 @@ Player::Player()
     m_SourceTile.setFillColor(sf::Color(0, 0, 255, 85));
     m_DestinationTile.setFillColor(sf::Color(255, 0, 0, 85));
     m_SpriteTile.setFillColor(sf::Color(0, 255, 0, 85));
-
-    m_Velocity = sf::Vector2f(0, 0);
 }
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -30,33 +28,121 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(m_Sprite, states);
 }
 
-void Player::update(sf::Time delta, int collisionGrid[21][21])
+void Player::handleEvent(sf::Event& event)
 {
-    if (m_MoveTimer.getElapsedTime().asSeconds() > 0.1)
+    if (event.type == sf::Event::KeyPressed)
     {
-        m_MoveTimer.restart();
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        if (event.key.code == m_Up ||
+            event.key.code == m_Left ||
+            event.key.code == m_Down ||
+            event.key.code == m_Right)
         {
-            m_Velocity.y -= 32;
+            m_LastKeyPressed = event.key.code;
         }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        {
-            m_Velocity.y += 32;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            m_Velocity.x -= 32;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            m_Velocity.x += 32;
-        }
-
-        m_Sprite.move(m_Velocity.x, m_Velocity.y);
-        m_Velocity = sf::Vector2f(0, 0);
     }
+
+    if (event.type == sf::Event::KeyReleased)
+    {
+        if (m_LastKeyPressed == event.key.code);
+        {
+            m_LastKeyPressed = sf::Keyboard::Key::Unknown;
+        }
+    }
+}
+
+void Player::update(sf::Time delta, std::vector<std::vector<int>> collisionGrid)
+{
+    if (m_Source == m_Destination) //Not moving
+    {
+        if (m_LastKeyPressed == sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
+        {
+            if (sf::Keyboard::isKeyPressed(m_Up))
+            {
+                m_Destination.y = m_Source.y + -32;
+            }
+            else if (sf::Keyboard::isKeyPressed(m_Left))
+            {
+                m_Destination.x = m_Source.x + -32;
+            }
+            else if (sf::Keyboard::isKeyPressed(m_Down))
+            {
+                m_Destination.y = m_Source.y + 32;
+            }
+            else if (sf::Keyboard::isKeyPressed(m_Right))
+            {
+                m_Destination.x = m_Source.x + 32;
+            }
+            else
+            {
+                m_Destination = m_Source;
+            }
+        }
+        else
+        {
+            if (m_LastKeyPressed == m_Up && sf::Keyboard::isKeyPressed(m_Up)) //Using LastKeyPressed so that the newest movement key press changes direction, making movement more fluid
+            {
+                m_Destination.y = m_Source.y + -32;
+            }
+            else if (m_LastKeyPressed == m_Left && sf::Keyboard::isKeyPressed(m_Left))
+            {
+                m_Destination.x = m_Source.x + -32;
+            }
+            else if (m_LastKeyPressed == m_Down && sf::Keyboard::isKeyPressed(m_Down))
+            {
+                m_Destination.y = m_Source.y + 32;
+            }
+            else if (m_LastKeyPressed == m_Right && sf::Keyboard::isKeyPressed(m_Right))
+            {
+                m_Destination.x = m_Source.x + 32;
+            }
+            else
+            {
+                m_Destination = m_Source;
+            }
+        }
+    }
+
+    if (collisionGrid[m_Destination.y / 32][m_Destination.x / 32] == 0) //Valid destination
+    {
+        if (m_Destination.x > m_Sprite.getPosition().x - 3 && m_Destination.x < m_Sprite.getPosition().x + 3) //Because of floating point movement. if within range of error then fix position
+        {
+            if (m_Destination.y > m_Sprite.getPosition().y - 3 && m_Destination.y < m_Sprite.getPosition().y + 3)
+            {
+                m_Sprite.setPosition(m_Destination);
+                m_Source = m_Destination;
+            }
+            else
+            {
+                m_Sprite.move(0, (m_Destination.y - m_Source.y) * m_Acceleration * delta.asSeconds());
+            }
+        }
+        else
+        {
+            m_Sprite.move((m_Destination.x - m_Source.x) * m_Acceleration * delta.asSeconds(), 0);
+        }
+    }
+    else
+    {
+        m_Destination = m_Source;
+    }
+
+    m_SourceTile.setPosition(m_Source);
+    m_DestinationTile.setPosition(m_Destination);
+    m_SpriteTile.setPosition(int((m_Sprite.getPosition().x + 16) / 32) * 32, int((m_Sprite.getPosition().y + 16) / 32) * 32);
+}
+
+void Player::useWASD()
+{
+    m_Up = sf::Keyboard::Key::W;
+    m_Left = sf::Keyboard::Key::A;
+    m_Down = sf::Keyboard::Key::S;
+    m_Right = sf::Keyboard::Key::D;
+}
+
+void Player::useArrows()
+{
+    m_Up = sf::Keyboard::Key::Up;
+    m_Left = sf::Keyboard::Key::Left;
+    m_Down = sf::Keyboard::Key::Down;
+    m_Right = sf::Keyboard::Key::Right;
 }

@@ -23,7 +23,7 @@ public:
     void deleteState(StateID s);
     State& getActiveState();
 private:
-    static std::vector<State> m_States;
+    static std::vector<std::shared_ptr<State>> m_States;
     static unsigned int m_ActiveStatePosition;
 };
 

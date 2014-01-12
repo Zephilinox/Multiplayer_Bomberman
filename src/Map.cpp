@@ -1,14 +1,20 @@
-#include "World.hpp"
+#include "Map.hpp"
 
-World::World()
+Map::Map()
 {
+    m_CollisionGrid.resize(22);
+    for (unsigned int i = 0; i < m_CollisionGrid.size(); ++i)
+    {
+        m_CollisionGrid[i].resize(22);
+    }
+
 	sf::VertexArray floor(sf::Quads, 21*21*4);
 	m_LevelFloor.setPrimitiveType(sf::Quads);
 	m_LevelFloor.resize(21*21*4);
 
-	for (int h = 0; h < 672/32; ++h)
+	for (int h = 0; h < 704/32; ++h)
 	{
-		for (int w = 0; w < 672/32; ++w)
+		for (int w = 0; w < 704/32; ++w)
 		{
 			sf::Vertex TL;
 			TL.color = sf::Color::White;
@@ -36,14 +42,14 @@ World::World()
 		}
 	}
 
-    for (int h = 0; h < 21; ++h)
+    for (unsigned int h = 0; h < m_CollisionGrid.size(); ++h)
 	{
 		m_CollisionGrid[h][0] = 1;
-		m_CollisionGrid[h][20] = 1;
+		m_CollisionGrid[h][m_CollisionGrid[0].size() - 1] = 1;
 		m_CollisionGrid[0][h] = 1;
-		m_CollisionGrid[20][h] = 1;
+		m_CollisionGrid[m_CollisionGrid.size() - 1][h] = 1;
 
-		for (int w = 0; w < 21; ++w)
+		for (unsigned int w = 0; w < m_CollisionGrid[0].size(); ++w)
 		{
 			if (h % 3 == 0 && w % 3 == 0)
 			{
@@ -53,21 +59,22 @@ World::World()
 	}
 }
 
-void World::update(const sf::Time& delta)
+void Map::update(const sf::Time& delta)
 {
-    m_Player1.update(delta, m_CollisionGrid);
 }
 
-sf::VertexArray& World::getLevelFloor()
+std::vector<std::vector<int>> Map::getCollisionGrid()
 {
-    return m_LevelFloor;
+    return m_CollisionGrid;
 }
 
-void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    for (int h = 0; h < 21; ++h)
+    target.draw(m_LevelFloor, &m_ResMan.texture("tile"));
+
+    for (unsigned int h = 0; h < m_CollisionGrid.size(); ++h)
     {
-        for (int w = 0; w < 21; ++w)
+        for (unsigned int w = 0; w < m_CollisionGrid[0].size(); ++w)
         {
             if (m_CollisionGrid[h][w] == 1)
             {
@@ -78,6 +85,4 @@ void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
             }
         }
     }
-
-    target.draw(m_Player1, states);
 }
