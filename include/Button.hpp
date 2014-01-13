@@ -20,6 +20,7 @@ public:
     void update(sf::RenderWindow& window);
     void setCharacterSize(unsigned int x);
     void setString(std::string str);
+    std::string getString();
 
     bool mouseClicked();
 

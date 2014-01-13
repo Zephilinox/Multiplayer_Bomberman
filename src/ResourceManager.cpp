@@ -22,6 +22,10 @@ ResourceManager::ResourceManager()
 
 ResourceManager::~ResourceManager()
 {
+    for (std::map<std::string, std::unique_ptr<sf::Music>>::iterator it = m_Music.begin(); it != m_Music.end(); ++it)
+    {
+        it->second->stop();
+    }
 }
 
 void ResourceManager::Update()

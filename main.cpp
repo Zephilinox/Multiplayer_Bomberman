@@ -36,8 +36,8 @@ int main(int argc, char **argv)
 	fps.setFont(ResMan.font("arial"));
 	fps.setColor(sf::Color::White);
 
-    //ResMan.music("background3").setLoop(true);
-    //ResMan.music("background3").play();
+    ResMan.music("background3").setLoop(true);
+    ResMan.music("background3").play();
 
     StateMan.addState(zge::StateID::MenuState);
     StateMan.addState(zge::StateID::GameState);

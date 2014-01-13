@@ -8,7 +8,8 @@ namespace zge
 
 ResourceManager Button::m_ResMan;
 
-Button::Button(std::string textureName)
+Button::Button(std::string textureName):
+m_MouseClicked(false)
 {
     m_Sprite.setTexture(m_ResMan.texture(textureName));
     m_Text.setFont(m_ResMan.font("arial"));
@@ -62,6 +63,11 @@ void Button::setString(std::string str)
     m_Text.setString(str);
     m_Text.setPosition(m_Sprite.getPosition().x + 125 - m_Text.getLocalBounds().width/2,
                        m_Sprite.getPosition().y + 50 - m_Text.getLocalBounds().height);
+}
+
+std::string Button::getString()
+{
+    return m_Text.getString();
 }
 
 bool Button::mouseClicked()

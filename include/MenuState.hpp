@@ -7,7 +7,7 @@
 
 //SELF
 #include "State.hpp"
-#include "Button.hpp"
+#include "Menu.hpp"
 
 class MenuState : public zge::State
 {
@@ -17,11 +17,11 @@ public:
     virtual void update(sf::RenderWindow& window, const sf::Time& delta);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
-    zge::Button m_newGame;
-    zge::Button m_newGame1;
-    zge::Button m_newGame2;
-    zge::Button m_newGame3;
-    zge::Button m_newGame4;
+    zge::Menu m_MainMenu;
+    zge::Menu m_MultiplayerMenu;
+    zge::Menu m_ActiveMenu; //Assign a menu to it.
+
+    zge::ResourceManager m_ResMan;
 };
 
 #endif // MENUSTATE_HPP
