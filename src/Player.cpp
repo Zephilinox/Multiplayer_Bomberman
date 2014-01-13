@@ -5,7 +5,7 @@
 
 Player::Player()
 {
-    m_Sprite.setTexture(m_ResMan.texture("Yellow"));
+    m_Sprite.setTexture(m_ResMan.texture("Circle"));
     m_Sprite.setPosition(64, 64);
     m_Destination = m_Sprite.getPosition();
     m_Source = m_Sprite.getPosition();
@@ -52,6 +52,8 @@ void Player::handleEvent(sf::Event& event)
 
 void Player::update(sf::Time delta, std::vector<std::vector<int>> collisionGrid)
 {
+    //Look in to Up+Right with a wall blocking Right. Needs to still move Up.
+
     if (m_Source == m_Destination) //Not moving
     {
         if (m_LastKeyPressed == sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
@@ -145,4 +147,9 @@ void Player::useArrows()
     m_Left = sf::Keyboard::Key::Left;
     m_Down = sf::Keyboard::Key::Down;
     m_Right = sf::Keyboard::Key::Right;
+}
+
+void Player::setColor(sf::Color c)
+{
+    m_Sprite.setColor(c);
 }

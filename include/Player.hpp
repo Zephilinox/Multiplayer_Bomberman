@@ -16,10 +16,12 @@ public:
     void update(sf::Time dleta, std::vector<std::vector<int>> collisionGrid);
     void useWASD();
     void useArrows();
+
+    void setColor(sf::Color c);
 private:
     sf::Sprite m_Sprite;
     zge::ResourceManager m_ResMan;
-    unsigned int m_Acceleration = 9; //Increment by 1.5 up to 6 times (max of 9)
+    unsigned int m_Acceleration = 3; //Increment by 1.5 up to 6 times (min 3, max 9)
 
     sf::Vector2f m_Source;
     sf::Vector2f m_Destination;

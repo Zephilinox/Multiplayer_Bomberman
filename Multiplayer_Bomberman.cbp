@@ -45,32 +45,34 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="E:/Programming/C++/SFML-2.1/include" />
+			<Add directory="Z:/Programming/C++/SFML-2.1/include" />
 			<Add directory="src" />
 			<Add directory="include" />
 		</Compiler>
 		<Linker>
-			<Add directory="E:/Programming/C++/SFML-2.1/lib" />
+			<Add directory="Z:/Programming/C++/SFML-2.1/lib" />
 		</Linker>
 		<Unit filename="include/Button.hpp" />
 		<Unit filename="include/GameState.hpp" />
+		<Unit filename="include/Map.hpp" />
 		<Unit filename="include/MenuState.hpp" />
 		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/ResourceManager.hpp" />
 		<Unit filename="include/State.hpp" />
 		<Unit filename="include/StateManager.hpp" />
 		<Unit filename="include/Utility.hpp" />
-		<Unit filename="include/World.hpp" />
+		<Unit filename="include/Vector.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Button.cpp" />
 		<Unit filename="src/GameState.cpp" />
+		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/MenuState.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
 		<Unit filename="src/State.cpp" />
 		<Unit filename="src/StateManager.cpp" />
 		<Unit filename="src/Utility.cpp" />
-		<Unit filename="src/World.cpp" />
+		<Unit filename="src/Vector.cpp" />
 		<Unit filename="textures/Yellow.png" />
 		<Unit filename="textures/button.png" />
 		<Unit filename="textures/tile-b.png" />

@@ -6,7 +6,10 @@ GameState::GameState()
     this->targetState = stateID;
 
     m_Player1.useWASD();
+    m_Player1.setColor(sf::Color(200, 0, 0));
+
     m_Player2.useArrows();
+    m_Player2.setColor(sf::Color(0, 0, 200));
 }
 
 void GameState::handleEvent(sf::Event& event, sf::RenderWindow& window)
