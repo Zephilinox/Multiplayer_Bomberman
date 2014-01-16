@@ -11,7 +11,7 @@
 #include "ResourceManager.hpp"
 #include "Player.hpp"
 
-class Map
+class Map : public sf::Drawable
 {
 public:
     Map();

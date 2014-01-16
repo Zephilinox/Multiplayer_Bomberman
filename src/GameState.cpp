@@ -25,6 +25,8 @@ void GameState::update(sf::RenderWindow& window, const sf::Time& delta)
     m_Player1.update(delta, m_Map.getCollisionGrid());
     m_Player2.update(delta, m_Map.getCollisionGrid());
 
+    m_BombMan.update();
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
         this->targetState = zge::StateID::MenuState;
@@ -37,7 +39,8 @@ void GameState::update(sf::RenderWindow& window, const sf::Time& delta)
 
 void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    m_Map.draw(target, states);
+    target.draw(m_Map, states);
+    m_BombMan.draw(target, states);
     target.draw(m_Player1, states);
     target.draw(m_Player2, states);
 }

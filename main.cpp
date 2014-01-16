@@ -18,7 +18,6 @@
 
 zge::ResourceManager ResMan;
 zge::StateManager StateMan;
-BombManager BombMan;
 
 int main(int argc, char **argv)
 {
@@ -37,8 +36,8 @@ int main(int argc, char **argv)
 	fps.setFont(ResMan.font("arial"));
 	fps.setColor(sf::Color::White);
 
-    ResMan.music("background3").setLoop(true);
-    ResMan.music("background3").play();
+    //ResMan.music("background3").setLoop(true);
+    //ResMan.music("background3").play();
 
     StateMan.addState(zge::StateID::MenuState);
     StateMan.addState(zge::StateID::GameState);
@@ -76,8 +75,6 @@ int main(int argc, char **argv)
 		window.clear(sf::Color(40, 40, 40));
 
         window.draw(StateMan.getActiveState());
-        sf::RenderStates rs;
-        BombMan.drawBombs(window, rs);
 
 		window.draw(fps);
 		window.display();

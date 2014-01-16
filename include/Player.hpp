@@ -25,7 +25,7 @@ private:
     zge::ResourceManager m_ResMan;
     BombManager m_BombMan;
     unsigned int m_Acceleration = 3; //Increment by 1.5 up to 6 times (min 3, max 9)
-    unsigned int m_BombPower = 1; //Incremnt by 1 up to
+    unsigned int m_BombPower = 7; //Increment by 1 up to 7?
     sf::Vector2f m_Source;
     sf::Vector2f m_Destination;
     sf::Vector2f m_TilePosition;

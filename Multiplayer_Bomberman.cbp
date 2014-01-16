@@ -56,6 +56,7 @@
 		<Unit filename="include/Bomb.hpp" />
 		<Unit filename="include/BombManager.hpp" />
 		<Unit filename="include/Button.hpp" />
+		<Unit filename="include/Explosion.hpp" />
 		<Unit filename="include/GameState.hpp" />
 		<Unit filename="include/Map.hpp" />
 		<Unit filename="include/Menu.hpp" />
@@ -71,6 +72,7 @@
 		<Unit filename="src/Bomb.cpp" />
 		<Unit filename="src/BombManager.cpp" />
 		<Unit filename="src/Button.cpp" />
+		<Unit filename="src/Explosion.cpp" />
 		<Unit filename="src/GameState.cpp" />
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/Menu.cpp" />

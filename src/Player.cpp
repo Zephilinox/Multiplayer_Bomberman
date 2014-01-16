@@ -54,7 +54,7 @@ void Player::update(sf::Time delta, std::vector<std::vector<int>> collisionGrid)
 {
     if (sf::Keyboard::isKeyPressed(m_Bomb))
     {
-        m_BombMan.addBomb(m_DestinationTile.getPosition(), m_BombPower);
+        m_BombMan.addBomb(m_SourceTile.getPosition(), m_BombPower);
     }
 
     //Look in to Up+Right with a wall blocking Right. Needs to still move Up.
