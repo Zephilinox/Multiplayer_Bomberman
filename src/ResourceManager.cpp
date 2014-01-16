@@ -22,10 +22,13 @@ ResourceManager::ResourceManager()
 
 ResourceManager::~ResourceManager()
 {
-    for (std::map<std::string, std::unique_ptr<sf::Music>>::iterator it = m_Music.begin(); it != m_Music.end(); ++it)
+    //Something is causing an OpenAL stack error when exiting.
+    /*for (std::list<sf::Sound>::iterator it = m_Sounds.begin(); it != m_Sounds.end(); ++it)
     {
-        it->second->stop();
+        it->stop(); //Each sound has a seperate thread within OpenAL, so they must be stopped before being killed
     }
+
+    m_Sounds.clear(); //If the SoundBuffer is destroyed before the sounds the program will crash*/
 }
 
 void ResourceManager::Update()

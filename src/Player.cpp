@@ -52,6 +52,11 @@ void Player::handleEvent(sf::Event& event)
 
 void Player::update(sf::Time delta, std::vector<std::vector<int>> collisionGrid)
 {
+    if (sf::Keyboard::isKeyPressed(m_Bomb))
+    {
+        m_BombMan.addBomb(m_DestinationTile.getPosition(), m_BombPower);
+    }
+
     //Look in to Up+Right with a wall blocking Right. Needs to still move Up.
 
     if (m_Source == m_Destination) //Not moving
@@ -139,6 +144,7 @@ void Player::useWASD()
     m_Left = sf::Keyboard::Key::A;
     m_Down = sf::Keyboard::Key::S;
     m_Right = sf::Keyboard::Key::D;
+    m_Bomb = sf::Keyboard::Key::Space;
 }
 
 void Player::useArrows()
@@ -147,6 +153,7 @@ void Player::useArrows()
     m_Left = sf::Keyboard::Key::Left;
     m_Down = sf::Keyboard::Key::Down;
     m_Right = sf::Keyboard::Key::Right;
+    m_Bomb = sf::Keyboard::Key::RControl;
 }
 
 void Player::setColor(sf::Color c)

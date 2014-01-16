@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1389647846 source:z:\programming\githubrepositories\multiplayer_bomberman\main.cpp
+1389856048 source:z:\programming\githubrepositories\multiplayer_bomberman\main.cpp
 	<iostream>
 	<string>
 	<sstream>
@@ -422,7 +422,7 @@
 1386847699 source:z:\programming\githubrepositories\multiplayer_bomberman\src\utility.cpp
 	"Utility.hpp"
 
-1388913336 source:z:\programming\githubrepositories\multiplayer_bomberman\src\resourcemanager.cpp
+1389813728 source:z:\programming\githubrepositories\multiplayer_bomberman\src\resourcemanager.cpp
 	"ResourceManager.hpp"
 	<cassert>
 	<iostream>
@@ -828,11 +828,13 @@
 	<vector>
 	<string>
 
-1389629280 z:\programming\githubrepositories\multiplayer_bomberman\include\player.hpp
+1389855830 z:\programming\githubrepositories\multiplayer_bomberman\include\player.hpp
 	<SFML/Graphics.hpp>
 	"ResourceManager.hpp"
+	"Bomb.hpp"
+	"BombManager.hpp"
 
-1389629249 source:z:\programming\githubrepositories\multiplayer_bomberman\src\player.cpp
+1389815651 source:z:\programming\githubrepositories\multiplayer_bomberman\src\player.cpp
 	"Player.hpp"
 	<iostream>
 	<cmath>
@@ -1411,4 +1413,23 @@
 
 1389629714 source:z:\programming\githubrepositories\multiplayer_bomberman\src\map.cpp
 	"Map.hpp"
+
+1389813951 source:z:\programming\githubrepositories\multiplayer_bomberman\src\animation.cpp
+	"Animation.hpp"
+
+1389813997 z:\programming\githubrepositories\multiplayer_bomberman\include\animation.hpp
+
+1389815845 z:\programming\githubrepositories\multiplayer_bomberman\include\bomb.hpp
+	<SFML/Graphics.hpp>
+	"ResourceManager.hpp"
+
+1389855789 source:z:\programming\githubrepositories\multiplayer_bomberman\src\bomb.cpp
+	"Bomb.hpp"
+
+1389856063 source:z:\programming\githubrepositories\multiplayer_bomberman\src\bombmanager.cpp
+	"BombManager.hpp"
+
+1389855987 z:\programming\githubrepositories\multiplayer_bomberman\include\bombmanager.hpp
+	<vector>
+	"Bomb.hpp"
 

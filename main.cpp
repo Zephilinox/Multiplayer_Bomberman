@@ -18,6 +18,7 @@
 
 zge::ResourceManager ResMan;
 zge::StateManager StateMan;
+BombManager BombMan;
 
 int main(int argc, char **argv)
 {
@@ -75,6 +76,8 @@ int main(int argc, char **argv)
 		window.clear(sf::Color(40, 40, 40));
 
         window.draw(StateMan.getActiveState());
+        sf::RenderStates rs;
+        BombMan.drawBombs(window, rs);
 
 		window.draw(fps);
 		window.display();

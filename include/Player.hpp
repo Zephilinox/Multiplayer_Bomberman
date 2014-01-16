@@ -6,6 +6,8 @@
 
 //SELF
 #include "ResourceManager.hpp"
+#include "Bomb.hpp"
+#include "BombManager.hpp"
 
 class Player : public sf::Drawable
 {
@@ -21,8 +23,9 @@ public:
 private:
     sf::Sprite m_Sprite;
     zge::ResourceManager m_ResMan;
+    BombManager m_BombMan;
     unsigned int m_Acceleration = 3; //Increment by 1.5 up to 6 times (min 3, max 9)
-
+    unsigned int m_BombPower = 1; //Incremnt by 1 up to
     sf::Vector2f m_Source;
     sf::Vector2f m_Destination;
     sf::Vector2f m_TilePosition;
@@ -37,6 +40,7 @@ private:
     sf::Keyboard::Key m_Left = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_Down = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_Right = sf::Keyboard::Key::Unknown;
+    sf::Keyboard::Key m_Bomb = sf::Keyboard::Key::Unknown;
 };
 
 #endif // PLAYER_HPP
