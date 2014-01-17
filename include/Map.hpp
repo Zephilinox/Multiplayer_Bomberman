@@ -9,7 +9,6 @@
 
 //SELF
 #include "ResourceManager.hpp"
-#include "Player.hpp"
 
 class Map : public sf::Drawable
 {
@@ -19,6 +18,7 @@ public:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     std::vector<std::vector<int>> getCollisionGrid();
+    void setCollisionGridSquare(sf::Vector2i pos, int val);
 
 private:
     sf::VertexArray m_LevelFloor;

@@ -7,13 +7,13 @@ BombManager::BombManager()
     //ctor
 }
 
-void BombManager::update()
+void BombManager::update(Map& levelMap)
 {
     for (unsigned int i = 0; i < m_Bombs.size(); ++i)
     {
         if (m_Bombs[i].getState() != BombState::Dead)
         {
-            m_Bombs[i].update();
+            m_Bombs[i].update(levelMap);
         }
         else
         {
@@ -24,6 +24,14 @@ void BombManager::update()
 
 void BombManager::addBomb(sf::Vector2f pos, unsigned int pow)
 {
+    for (unsigned int i = 0; i < m_Bombs.size(); ++i)
+    {
+        if (m_Bombs[i].getPosition() == pos)
+        {
+            return;
+        }
+    }
+
     Bomb b(pos, pow);
     m_Bombs.push_back(b);
 }

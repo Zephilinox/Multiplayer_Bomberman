@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="include\GameState.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="274" topLine="0" />
+			<Cursor1 position="695" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="include\Map.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Bomb.hpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="552" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\MenuState.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="119" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Player.hpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="170" topLine="4" />
-		</Cursor>
-	</File>
-	<File name="include\ResourceManager.hpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="755" topLine="0" />
+			<Cursor1 position="590" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\State.hpp" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -31,39 +16,14 @@
 			<Cursor1 position="511" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\BombManager.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Bomb.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="238" topLine="0" />
+			<Cursor1 position="368" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\StateManager.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\BombManager.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="439" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Bomb.hpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="282" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Button.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="47" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1725" topLine="48" />
-		</Cursor>
-	</File>
-	<File name="src\Bomb.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="399" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\BombManager.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="349" topLine="0" />
+			<Cursor1 position="731" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Button.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -73,12 +33,12 @@
 	</File>
 	<File name="src\GameState.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="320" topLine="0" />
+			<Cursor1 position="686" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Map.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="372" topLine="18" />
+			<Cursor1 position="2121" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Menu.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -88,12 +48,12 @@
 	</File>
 	<File name="src\MenuState.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1788" topLine="33" />
+			<Cursor1 position="1737" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Player.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Player.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4671" topLine="122" />
+			<Cursor1 position="1391" topLine="6" />
 		</Cursor>
 	</File>
 	<File name="src\ResourceManager.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -109,6 +69,61 @@
 	<File name="src\StateManager.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="80" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\ResourceManager.hpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="755" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\BombManager.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="117" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Button.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="47" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\MenuState.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="119" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Player.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="396" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="include\Explosion.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="413" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\StateManager.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="439" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\GameState.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="653" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Explosion.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="371" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Utility.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="107" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Map.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="187" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

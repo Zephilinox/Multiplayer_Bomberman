@@ -34,6 +34,7 @@ private:
     sf::RectangleShape m_SpriteTile;
 
     sf::Clock m_MoveTimer;
+    sf::Clock m_BombSpawnTimer;
 
     sf::Keyboard::Key m_LastKeyPressed = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_Up = sf::Keyboard::Key::Unknown;

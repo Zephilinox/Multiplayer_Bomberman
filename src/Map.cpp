@@ -74,6 +74,11 @@ std::vector<std::vector<int>> Map::getCollisionGrid()
     return m_CollisionGrid;
 }
 
+void Map::setCollisionGridSquare(sf::Vector2i pos, int val)
+{
+    m_CollisionGrid[pos.y][pos.x] = val;
+}
+
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(m_LevelFloor, &m_ResMan.texture("tile"));

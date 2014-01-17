@@ -9,7 +9,7 @@ m_State(BombState::Idle)
     m_Sprite.setPosition(pos);
 }
 
-void Bomb::update()
+void Bomb::update(Map& levelMap)
 {
     if (m_State == BombState::Idle && m_TimeAlive.getElapsedTime().asSeconds() > 3.f)
     {
@@ -18,16 +18,88 @@ void Bomb::update()
         //m_Sprite.setTexture(m_ResMan.getTexture("CentreExplosion"));
         m_Sprite.setColor(sf::Color(100, 100, 100));
 
+        bool northBlocked = false;
+        bool eastBlocked = false;
+        bool southBlocked = false;
+        bool westBlocked = false;
+
         for (unsigned int j = 0; j < m_MaxPower; ++j)
         {
-            Explosion e1(m_Sprite.getPosition(), sf::Vector2f(m_Sprite.getPosition().x, m_Sprite.getPosition().y - (32 * j + 32))); //North
-            Explosion e2(m_Sprite.getPosition(), sf::Vector2f(m_Sprite.getPosition().x + (32 * j + 32), m_Sprite.getPosition().y)); //East
-            Explosion e3(m_Sprite.getPosition(), sf::Vector2f(m_Sprite.getPosition().x, m_Sprite.getPosition().y + (32 * j + 32))); //South
-            Explosion e4(m_Sprite.getPosition(), sf::Vector2f(m_Sprite.getPosition().x - (32 * j + 32), m_Sprite.getPosition().y)); //West
-            m_Explosions.push_back(e1);
-            m_Explosions.push_back(e2);
-            m_Explosions.push_back(e3);
-            m_Explosions.push_back(e4);
+            if (northBlocked == false)
+            {
+                sf::Vector2f ePos = sf::Vector2f(m_Sprite.getPosition().x, m_Sprite.getPosition().y - (32 * j + 32));
+                if (ePos.y >= 0)
+                    {
+                    Explosion e1(m_Sprite.getPosition(), ePos); //North
+
+                    if (levelMap.getCollisionGrid()[ePos.y / 32][ePos.x / 32] == 1)
+                    {
+                        levelMap.setCollisionGridSquare(sf::Vector2i(ePos.x / 32, ePos.y / 32), 0);
+                        northBlocked = true;
+                    }
+                    else
+                    {
+                        m_Explosions.push_back(e1);
+                    }
+                }
+            }
+
+            if (eastBlocked == false)
+            {
+                sf::Vector2f ePos = sf::Vector2f(m_Sprite.getPosition().x + (32 * j + 32), m_Sprite.getPosition().y);
+                if (ePos.x <= 704 - 32)
+                {
+                    Explosion e1(m_Sprite.getPosition(), ePos); //East
+
+                    if (levelMap.getCollisionGrid()[ePos.y / 32][ePos.x / 32] == 1)
+                    {
+                        levelMap.setCollisionGridSquare(sf::Vector2i(ePos.x / 32, ePos.y / 32), 0);
+                        eastBlocked = true;
+                    }
+                    else
+                    {
+                        m_Explosions.push_back(e1);
+                    }
+                }
+            }
+
+            if (southBlocked == false)
+            {
+                sf::Vector2f ePos = sf::Vector2f(m_Sprite.getPosition().x, m_Sprite.getPosition().y + (32 * j + 32));
+                if (ePos.y <= 704 - 32)
+                {
+                    Explosion e1(m_Sprite.getPosition(), ePos); //South
+
+                    if (levelMap.getCollisionGrid()[ePos.y / 32][ePos.x / 32] == 1)
+                    {
+                        levelMap.setCollisionGridSquare(sf::Vector2i(ePos.x / 32, ePos.y / 32), 0);
+                        southBlocked = true;
+                    }
+                    else
+                    {
+                        m_Explosions.push_back(e1);
+                    }
+                }
+            }
+
+            if (westBlocked == false)
+            {
+                sf::Vector2f ePos = sf::Vector2f(m_Sprite.getPosition().x - (32 * j + 32), m_Sprite.getPosition().y);
+                if (ePos.x >= 0)
+                {
+                    Explosion e1(m_Sprite.getPosition(), ePos); //West
+
+                    if (levelMap.getCollisionGrid()[ePos.y / 32][ePos.x / 32] == 1)
+                    {
+                        levelMap.setCollisionGridSquare(sf::Vector2i(ePos.x / 32, ePos.y / 32), 0);
+                        westBlocked = true;
+                    }
+                    else
+                    {
+                        m_Explosions.push_back(e1);
+                    }
+                }
+            }
         }
     }
 
@@ -65,4 +137,9 @@ BombState Bomb::getState()
 unsigned int Bomb::getPower()
 {
     return m_MaxPower;
+}
+
+sf::Vector2f Bomb::getPosition()
+{
+    return m_Sprite.getPosition();
 }

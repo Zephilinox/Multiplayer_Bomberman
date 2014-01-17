@@ -14,7 +14,7 @@ class BombManager
 {
 public:
     BombManager();
-    void update();
+    void update(Map& levelMap);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void addBomb(sf::Vector2f pos, unsigned int pow);
 private:

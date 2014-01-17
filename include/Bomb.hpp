@@ -10,6 +10,7 @@
 //SELF
 #include "ResourceManager.hpp"
 #include "Explosion.hpp"
+#include "Map.hpp"
 
 enum BombState {Idle = 0, Exploded, Dead};
 
@@ -17,10 +18,11 @@ class Bomb : public sf::Drawable
 {
 public:
     Bomb(sf::Vector2f pos, unsigned int pow = 1);
-    void update();
+    void update(Map& levelMap);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     BombState getState();
     unsigned int getPower();
+    sf::Vector2f getPosition();
 
 private:
     sf::Sprite m_Sprite;
