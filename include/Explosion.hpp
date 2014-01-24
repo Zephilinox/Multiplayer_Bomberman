@@ -14,6 +14,7 @@ class Explosion: public sf::Drawable
 {
 public:
     Explosion(sf::Vector2f bombPos, sf::Vector2f exploPos);
+
     void update();
     sf::Time getTimeAlive();
     virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const;

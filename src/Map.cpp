@@ -1,5 +1,8 @@
 #include "Map.hpp"
 
+//STD
+#include <iostream>
+
 const int IndestructibleWall = -1;
 const int DestructibleWall = 1;
 
@@ -82,7 +85,6 @@ void Map::setCollisionGridSquare(sf::Vector2i pos, int val)
 void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(m_LevelFloor, &m_ResMan.texture("tile"));
-
     for (unsigned int h = 0; h < m_CollisionGrid.size(); ++h)
     {
         for (unsigned int w = 0; w < m_CollisionGrid[0].size(); ++w)

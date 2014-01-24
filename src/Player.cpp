@@ -55,7 +55,7 @@ void Player::update(sf::Time delta, std::vector<std::vector<int>> collisionGrid)
     if (sf::Keyboard::isKeyPressed(m_Bomb) && m_BombSpawnTimer.getElapsedTime().asSeconds() >= 0.5f)
     {
         m_BombSpawnTimer.restart();
-        m_BombMan.addBomb(m_SourceTile.getPosition(), m_BombPower);
+        m_BombMan.addBomb(m_Source, m_BombPower);
     }
 
     //Look in to Up+Right with a wall blocking Right. Needs to still move Up.
@@ -110,8 +110,14 @@ void Player::update(sf::Time delta, std::vector<std::vector<int>> collisionGrid)
         }
     }
 
-    if (collisionGrid[m_Destination.y / 32][m_Destination.x / 32] == 0) //Valid destination
+    if (collisionGrid[m_Destination.y / 32][m_Destination.x / 32] == 0 || collisionGrid[m_Destination.y / 32][m_Destination.x / 32] == 3) //Valid destination
     {
+        if (collisionGrid[m_Destination.y / 32][m_Destination.x / 32] == 3)
+        {
+            m_Health -= 1;
+            std::cout << m_Health << "\n";
+        }
+
         if (m_Destination.x > m_Sprite.getPosition().x - 3 && m_Destination.x < m_Sprite.getPosition().x + 3) //Because of floating point movement. if within range of error then fix position
         {
             if (m_Destination.y > m_Sprite.getPosition().y - 3 && m_Destination.y < m_Sprite.getPosition().y + 3)

@@ -828,13 +828,13 @@
 	<vector>
 	<string>
 
-1390000863 z:\programming\githubrepositories\multiplayer_bomberman\include\player.hpp
+1390553495 z:\programming\githubrepositories\multiplayer_bomberman\include\player.hpp
 	<SFML/Graphics.hpp>
 	"ResourceManager.hpp"
 	"Bomb.hpp"
 	"BombManager.hpp"
 
-1390001124 source:z:\programming\githubrepositories\multiplayer_bomberman\src\player.cpp
+1390553489 source:z:\programming\githubrepositories\multiplayer_bomberman\src\player.cpp
 	"Player.hpp"
 	<iostream>
 	<cmath>
@@ -1411,8 +1411,9 @@
 	<cmath>
 	<SFML/Graphics.hpp>
 
-1390000504 source:z:\programming\githubrepositories\multiplayer_bomberman\src\map.cpp
+1390553858 source:z:\programming\githubrepositories\multiplayer_bomberman\src\map.cpp
 	"Map.hpp"
+	<iostream>
 
 1389813951 source:z:\programming\githubrepositories\multiplayer_bomberman\src\animation.cpp
 	"Animation.hpp"
@@ -1426,7 +1427,7 @@
 	"Explosion.hpp"
 	"Map.hpp"
 
-1390001081 source:z:\programming\githubrepositories\multiplayer_bomberman\src\bomb.cpp
+1390553584 source:z:\programming\githubrepositories\multiplayer_bomberman\src\bomb.cpp
 	"Bomb.hpp"
 
 1390001071 source:z:\programming\githubrepositories\multiplayer_bomberman\src\bombmanager.cpp
@@ -1437,7 +1438,7 @@
 	<SFML/Graphics.hpp>
 	"Bomb.hpp"
 
-1389904198 z:\programming\githubrepositories\multiplayer_bomberman\include\explosion.hpp
+1390553121 z:\programming\githubrepositories\multiplayer_bomberman\include\explosion.hpp
 	<SFML/Graphics.hpp>
 	"ResourceManager.hpp"
 	"Utility.hpp"

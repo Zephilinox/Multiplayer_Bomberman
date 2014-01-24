@@ -11,6 +11,8 @@ m_State(BombState::Idle)
 
 void Bomb::update(Map& levelMap)
 {
+    levelMap.setCollisionGridSquare(sf::Vector2i(m_Sprite.getPosition().x / 32, m_Sprite.getPosition().y / 32), 2);
+
     if (m_State == BombState::Idle && m_TimeAlive.getElapsedTime().asSeconds() > 3.f)
     {
         m_State = BombState::Exploded;
@@ -39,6 +41,11 @@ void Bomb::update(Map& levelMap)
                     }
                     else
                     {
+                        if (levelMap.getCollisionGrid()[ePos.y / 32][ePos.x / 32] == 0)
+                        {
+                            levelMap.setCollisionGridSquare(sf::Vector2i(ePos.x / 32, ePos.y / 32), 3);
+                        }
+
                         m_Explosions.push_back(e1);
                     }
                 }
@@ -58,6 +65,11 @@ void Bomb::update(Map& levelMap)
                     }
                     else
                     {
+                        if (levelMap.getCollisionGrid()[ePos.y / 32][ePos.x / 32] == 0)
+                        {
+                            levelMap.setCollisionGridSquare(sf::Vector2i(ePos.x / 32, ePos.y / 32), 3);
+                        }
+
                         m_Explosions.push_back(e1);
                     }
                 }
@@ -77,6 +89,11 @@ void Bomb::update(Map& levelMap)
                     }
                     else
                     {
+                        if (levelMap.getCollisionGrid()[ePos.y / 32][ePos.x / 32] == 0)
+                        {
+                            levelMap.setCollisionGridSquare(sf::Vector2i(ePos.x / 32, ePos.y / 32), 3);
+                        }
+
                         m_Explosions.push_back(e1);
                     }
                 }
@@ -96,6 +113,11 @@ void Bomb::update(Map& levelMap)
                     }
                     else
                     {
+                        if (levelMap.getCollisionGrid()[ePos.y / 32][ePos.x / 32] == 0)
+                        {
+                            levelMap.setCollisionGridSquare(sf::Vector2i(ePos.x / 32, ePos.y / 32), 3);
+                        }
+
                         m_Explosions.push_back(e1);
                     }
                 }
@@ -105,6 +127,7 @@ void Bomb::update(Map& levelMap)
 
     if (m_State == BombState::Exploded)
     {
+        levelMap.setCollisionGridSquare(sf::Vector2i(m_Sprite.getPosition().x / 32, m_Sprite.getPosition().y / 32), 3);
         for (unsigned int i = 0; i < m_Explosions.size(); ++i)
         {
             m_Explosions[i].update();
@@ -116,6 +139,11 @@ void Bomb::update(Map& levelMap)
         m_Explosions.clear();
         m_Sprite.setColor(sf::Color(0, 0, 0, 0));
         m_State = BombState::Dead;
+    }
+
+    if (m_State == BombState::Dead)
+    {
+        levelMap.setCollisionGridSquare(sf::Vector2i(m_Sprite.getPosition().x / 32, m_Sprite.getPosition().y / 32), 0);
     }
 }
 
