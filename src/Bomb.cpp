@@ -27,6 +27,7 @@ void Bomb::update(Map& levelMap)
 
         for (unsigned int j = 0; j < m_MaxPower; ++j)
         {
+            //TODO: this can be reworked to less code dupe
             if (northBlocked == false)
             {
                 sf::Vector2f ePos = sf::Vector2f(m_Sprite.getPosition().x, m_Sprite.getPosition().y - (32 * j + 32));

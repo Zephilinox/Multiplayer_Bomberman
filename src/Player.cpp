@@ -52,7 +52,7 @@ void Player::handleEvent(sf::Event& event)
 
 void Player::update(sf::Time delta, std::vector<std::vector<int>> collisionGrid)
 {
-    if (sf::Keyboard::isKeyPressed(m_Bomb) && m_BombSpawnTimer.getElapsedTime().asSeconds() >= 0.5f)
+    if (sf::Keyboard::isKeyPressed(m_Bomb) && m_BombSpawnTimer.getElapsedTime().asSeconds() >= delta.asSeconds())
     {
         m_BombSpawnTimer.restart();
         m_BombMan.addBomb(m_Source, m_BombPower);
