@@ -10,9 +10,7 @@
 //SELF
 #include "ResourceManager.hpp"
 #include "Utility.hpp"
-#include "Player.hpp"
-#include "GameState.hpp"
-#include "Button.hpp"
+//#include "GameState.hpp"
 #include "MenuState.hpp"
 #include "StateManager.hpp"
 
@@ -40,7 +38,7 @@ int main(int argc, char **argv)
     //ResMan.music("background3").play();
 
     StateMan.addState(zge::StateID::MenuState);
-    StateMan.addState(zge::StateID::GameState);
+    //StateMan.addState(zge::StateID::GameState);
 
 	sf::Clock clock;
 	sf::Time prevFrame;
@@ -61,7 +59,6 @@ int main(int argc, char **argv)
                 {
                 }
             }
-
             StateMan.getActiveState().handleEvent(event, window);
 		}
 
