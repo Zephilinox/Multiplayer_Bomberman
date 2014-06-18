@@ -8,7 +8,7 @@
 
 //SELF
 #include "State.hpp"
-//#include "GameState.hpp"
+#include "GameState.hpp"
 #include "MenuState.hpp"
 
 namespace zge

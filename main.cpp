@@ -8,15 +8,15 @@
 #include <SFML/Graphics.hpp>
 
 //SELF
-#include "ResourceManager.hpp"
 #include "Utility.hpp"
-//#include "GameState.hpp"
+#include "GameState.hpp"
 #include "MenuState.hpp"
 #include "StateManager.hpp"
 #include "Constants.hpp"
+#include "FPS.hpp"
 
-zge::ResourceManager ResMan;
 zge::StateManager StateMan;
+FPS fps;
 
 int main(int argc, char **argv)
 {
@@ -31,15 +31,8 @@ int main(int argc, char **argv)
 	sf::RenderWindow window(sf::VideoMode(Constants::windowWidth, Constants::windowHeight), "Bomberman");
 	//window.setFramerateLimit(60);
 
-	sf::Text fps;
-	fps.setFont(ResMan.font("arial"));
-	fps.setColor(sf::Color::White);
-
-    //ResMan.music("background3").setLoop(true);
-    //ResMan.music("background3").play();
-
     StateMan.addState(zge::StateID::MenuState);
-    //StateMan.addState(zge::StateID::GameState);
+    StateMan.addState(zge::StateID::GameState);
 
 	sf::Clock clock;
 	sf::Time prevFrame;
@@ -64,8 +57,7 @@ int main(int argc, char **argv)
 		}
 
 		//Update
-		fps.setPosition(Constants::windowWidth - fps.getLocalBounds().width, 0);
-		ResMan.Update();
+		fps.update(window);
 
         StateMan.getActiveState().update(window, prevFrame);
 
@@ -73,13 +65,13 @@ int main(int argc, char **argv)
 		window.clear(sf::Color(40, 40, 40));
 
         window.draw(StateMan.getActiveState());
-
 		window.draw(fps);
 		window.display();
 
 		prevFrame = clock.restart();
-        fps.setString(zge::toString(std::floor(1.f / prevFrame.asSeconds())));
+        fps.setFPS(std::floor(1.f / prevFrame.asSeconds()));
 	}
 
+    std::cout << "exiting\n";
 	return 0;
 }

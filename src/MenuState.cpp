@@ -13,8 +13,10 @@ MenuState::MenuState()
     this->stateID = zge::StateID::MenuState;
     this->targetState = this->stateID;
 
+    //Some sort of memory leak regarding fonts and textures with these buttons
     m_MainMenu.addButton("button", "New Game");
     m_MainMenu.addButton("button", "Options");
+    m_MainMenu.addButton("button", "Quit");
 
     m_ActiveMenu = &m_MainMenu;
 }
@@ -41,7 +43,11 @@ void MenuState::update(sf::RenderWindow& window, const sf::Time& delta)
     {
         if (m_ActiveMenu->mouseClicked("New Game"))
         {
-            //this->targetState = zge::StateID::GameState;
+            this->targetState = zge::StateID::GameState;
+        }
+        else if (m_ActiveMenu->mouseClicked("Quit"))
+        {
+            window.close();
         }
     }
 }

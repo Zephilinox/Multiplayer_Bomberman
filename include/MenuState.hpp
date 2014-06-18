@@ -18,10 +18,7 @@ public:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
     zge::Menu m_MainMenu;
-    zge::Menu m_MultiplayerMenu;
     zge::Menu* m_ActiveMenu; //Assign a menu to it.
-
-    zge::ResourceManager m_ResMan;
 };
 
 #endif // MENUSTATE_HPP

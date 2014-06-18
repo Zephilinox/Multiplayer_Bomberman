@@ -40,14 +40,14 @@ void StateManager::addState(StateID s)
         std::cout << "MenuState Added\n";
         break;
     }
-    /*case StateID::GameState:
+    case StateID::GameState:
     {
         //::GameState gs;
         std::shared_ptr<State> gs(new ::GameState);
         m_States.push_back(gs);
         std::cout << "GameState Added\n";
         break;
-    }*/
+    }
     default:
         assert(!"Requested State does not exist.");
     }

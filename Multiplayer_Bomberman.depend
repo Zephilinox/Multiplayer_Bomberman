@@ -1,15 +1,16 @@
 # depslib dependency file v1.0
-1403086761 source:z:\programming\githubrepositories\multiplayer_bomberman\main.cpp
+1403096421 source:z:\programming\githubrepositories\multiplayer_bomberman\main.cpp
 	<iostream>
 	<string>
 	<sstream>
 	<vector>
 	<SFML/Graphics.hpp>
-	"ResourceManager.hpp"
 	"Utility.hpp"
+	"GameState.hpp"
 	"MenuState.hpp"
 	"StateManager.hpp"
 	"Constants.hpp"
+	"FPS.hpp"
 
 1367997278 z:\programming\c++\sfml-2.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -845,15 +846,15 @@
 	"ResourceManager.hpp"
 	"Player.hpp"
 
-1403084745 source:z:\programming\githubrepositories\multiplayer_bomberman\src\button.cpp
+1403094491 source:z:\programming\githubrepositories\multiplayer_bomberman\src\button.cpp
 	"Button.hpp"
 	<iostream>
 
-1403084316 z:\programming\githubrepositories\multiplayer_bomberman\include\button.hpp
+1403093605 z:\programming\githubrepositories\multiplayer_bomberman\include\button.hpp
 	<SFML/Graphics.hpp>
-	"ResourceManager.hpp"
+	"ResourceManagement/Resource.hpp"
 
-1403086747 source:z:\programming\githubrepositories\multiplayer_bomberman\src\menu.cpp
+1403093089 source:z:\programming\githubrepositories\multiplayer_bomberman\src\menu.cpp
 	"Menu.hpp"
 	<iostream>
 	"Constants.hpp"
@@ -870,37 +871,34 @@
 1389016094 z:\programming\githubrepositories\multiplayer_bomberman\include\state.hpp
 	<SFML/Graphics.hpp>
 
-1403086110 source:z:\programming\githubrepositories\multiplayer_bomberman\src\menustate.cpp
+1403095609 source:z:\programming\githubrepositories\multiplayer_bomberman\src\menustate.cpp
 	"MenuState.hpp"
 	<iostream>
 	"Menu.hpp"
 
-1403086059 z:\programming\githubrepositories\multiplayer_bomberman\include\menustate.hpp
+1403096696 z:\programming\githubrepositories\multiplayer_bomberman\include\menustate.hpp
 	"State.hpp"
 	"Menu.hpp"
 
-1402825576 source:z:\programming\githubrepositories\multiplayer_bomberman\src\statemanager.cpp
+1403092993 source:z:\programming\githubrepositories\multiplayer_bomberman\src\statemanager.cpp
 	"StateManager.hpp"
 	<assert.h>
 	<iostream>
 	<memory>
 	"MenuState.hpp"
 
-1402825533 z:\programming\githubrepositories\multiplayer_bomberman\include\statemanager.hpp
+1403093005 z:\programming\githubrepositories\multiplayer_bomberman\include\statemanager.hpp
 	<vector>
 	"State.hpp"
+	"GameState.hpp"
 	"MenuState.hpp"
 
-1390000241 source:z:\programming\githubrepositories\multiplayer_bomberman\src\gamestate.cpp
+1403092980 source:z:\programming\githubrepositories\multiplayer_bomberman\src\gamestate.cpp
 	"GameState.hpp"
 
-1389901497 z:\programming\githubrepositories\multiplayer_bomberman\include\gamestate.hpp
+1403093593 z:\programming\githubrepositories\multiplayer_bomberman\include\gamestate.hpp
 	<SFML/Graphics.hpp>
-	"ResourceManager.hpp"
-	"Player.hpp"
 	"State.hpp"
-	"Map.hpp"
-	"BombManager.hpp"
 
 1389013351 source:e:\programming\githubrepositories\multiplayer_bomberman\main.cpp
 	<iostream>
@@ -1446,4 +1444,37 @@
 	<iostream>
 
 1403086676 z:\programming\githubrepositories\multiplayer_bomberman\include\constants.hpp
+
+1403095097 z:\programming\githubrepositories\multiplayer_bomberman\include\resourcemanagement\resource.hpp
+	<string>
+	<memory>
+	<SFML/Audio.hpp>
+	"ResourceManager.hpp"
+	"ResourceManagement/Resource.inl"
+
+1403094846 z:\programming\githubrepositories\multiplayer_bomberman\include\resourcemanagement\resourcemanager.hpp
+	<map>
+	<memory>
+	"ResourceManagement/ResourceManager.inl"
+
+1403096784 z:\programming\githubrepositories\multiplayer_bomberman\src\resourcemanagement\resourcemanager.inl
+	<cassert>
+	<iostream>
+
+1403094982 z:\programming\githubrepositories\multiplayer_bomberman\src\resourcemanagement\resource.inl
+	<algorithm>
+	<locale>
+
+1403096026 z:\programming\githubrepositories\multiplayer_bomberman\include\fps.hpp
+	<SFML/Graphics.hpp>
+	"ResourceManagement/Resource.hpp"
+
+1403096017 source:z:\programming\githubrepositories\multiplayer_bomberman\src\fps.cpp
+	"FPS.hpp"
+	"Constants.hpp"
+	"Utility.hpp"
+
+1403095117 source:z:\programming\githubrepositories\multiplayer_bomberman\src\resourcemanagement\resource.cpp
+	"ResourceManagement/Resource.hpp"
+	"ResourceManagement/Resource.hpp"
 

@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 
 //SELF
-#include "ResourceManager.hpp"
+#include "ResourceManagement/Resource.hpp"
 
 namespace zge
 {
@@ -37,7 +37,8 @@ private:
 
     bool m_MouseClicked;
 
-    static ResourceManager m_ResMan;
+    Resource<sf::Texture> m_Texture;
+    Resource<sf::Font> m_Font;
 };
 
 } //ZGE

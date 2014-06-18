@@ -6,13 +6,13 @@
 namespace zge
 {
 
-ResourceManager Button::m_ResMan;
-
 Button::Button(std::string textureName):
-m_MouseClicked(false)
+m_MouseClicked(false),
+m_Texture("textures/Button.png"),
+m_Font("fonts/arial.ttf")
 {
-    m_Sprite.setTexture(m_ResMan.texture(textureName));
-    m_Text.setFont(m_ResMan.font("arial"));
+    m_Sprite.setTexture(m_Texture.get());
+    m_Text.setFont(m_Font.get());
 }
 
 void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const

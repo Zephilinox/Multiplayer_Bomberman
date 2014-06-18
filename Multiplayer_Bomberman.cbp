@@ -57,6 +57,7 @@
 			<Add directory="Z:/Programming/C++/SFML-2.1/lib" />
 		</Linker>
 		<Unit filename="include/Button.hpp" />
+		<Unit filename="include/Constants.hpp" />
 		<Unit filename="include/Menu.hpp" />
 		<Unit filename="include/MenuState.hpp" />
 		<Unit filename="include/ResourceManager.hpp" />
