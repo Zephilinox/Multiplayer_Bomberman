@@ -83,6 +83,12 @@ sf::Vector2u Button::getSize()
 void Button::setPosition(sf::Vector2f pos)
 {
     m_Sprite.setPosition(pos);
+    this->setString(m_Text.getString()); //Recenter text
+}
+
+sf::Vector2f Button::getPosition()
+{
+    return m_Sprite.getPosition();
 }
 
 } //ZGE

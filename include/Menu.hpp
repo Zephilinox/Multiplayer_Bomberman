@@ -24,6 +24,8 @@ public:
     void addButton(std::string textureName, std::string buttonName);
     bool mouseClicked(std::string buttonName);
 
+    void calculateButtonPositions();
+
 private:
     std::vector<Button> m_Buttons;
 };

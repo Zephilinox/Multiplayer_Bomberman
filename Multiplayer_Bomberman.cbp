@@ -18,10 +18,10 @@
 				</Compiler>
 				<Linker>
 					<Add option="-pg -lgmon" />
-					<Add library="sfml-audio-d" />
-					<Add library="sfml-graphics-d" />
-					<Add library="sfml-window-d" />
-					<Add library="sfml-system-d" />
+					<Add library="sfml-audio-s-d" />
+					<Add library="sfml-graphics-s-d" />
+					<Add library="sfml-window-s-d" />
+					<Add library="sfml-system-s-d" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -35,60 +35,44 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="sfml-audio" />
-					<Add library="sfml-graphics" />
-					<Add library="sfml-window" />
-					<Add library="sfml-system" />
+					<Add library="sfml-audio-s" />
+					<Add library="sfml-graphics-s" />
+					<Add library="sfml-window-s" />
+					<Add library="sfml-system-s" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add option="-DSFML_STATIC" />
 			<Add directory="Z:/Programming/C++/SFML-2.1/include" />
 			<Add directory="src" />
 			<Add directory="include" />
 		</Compiler>
 		<Linker>
+			<Add option="-static-libstdc++" />
+			<Add option="-static-libgcc" />
+			<Add option="-static" />
 			<Add directory="Z:/Programming/C++/SFML-2.1/lib" />
 		</Linker>
-		<Unit filename="include/Animation.hpp" />
-		<Unit filename="include/Bomb.hpp" />
-		<Unit filename="include/BombManager.hpp" />
 		<Unit filename="include/Button.hpp" />
-		<Unit filename="include/Explosion.hpp" />
-		<Unit filename="include/GameState.hpp" />
-		<Unit filename="include/Map.hpp" />
 		<Unit filename="include/Menu.hpp" />
 		<Unit filename="include/MenuState.hpp" />
-		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/ResourceManager.hpp" />
 		<Unit filename="include/State.hpp" />
 		<Unit filename="include/StateManager.hpp" />
 		<Unit filename="include/Utility.hpp" />
 		<Unit filename="include/Vector.hpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Animation.cpp" />
-		<Unit filename="src/Bomb.cpp" />
-		<Unit filename="src/BombManager.cpp" />
 		<Unit filename="src/Button.cpp" />
-		<Unit filename="src/Explosion.cpp" />
-		<Unit filename="src/GameState.cpp" />
-		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/MenuState.cpp" />
-		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
 		<Unit filename="src/State.cpp" />
 		<Unit filename="src/StateManager.cpp" />
 		<Unit filename="src/Utility.cpp" />
 		<Unit filename="src/Vector.cpp" />
-		<Unit filename="textures/Yellow.png" />
-		<Unit filename="textures/button.png" />
-		<Unit filename="textures/tile-b.png" />
-		<Unit filename="textures/tile.png" />
-		<Unit filename="textures/tile2.png" />
-		<Unit filename="textures/tile4.png" />
 		<Extensions>
 			<code_completion />
 			<envvars />
