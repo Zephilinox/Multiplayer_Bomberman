@@ -61,8 +61,8 @@ void Button::setCharacterSize(unsigned int x)
 void Button::setString(std::string str)
 {
     m_Text.setString(str);
-    m_Text.setPosition(m_Sprite.getPosition().x + 125 - m_Text.getLocalBounds().width/2,
-                       m_Sprite.getPosition().y + 50 - m_Text.getLocalBounds().height);
+    m_Text.setPosition(m_Sprite.getPosition().x + (m_Sprite.getTexture()->getSize().x/2) - (m_Text.getLocalBounds().width/2),
+                       m_Sprite.getPosition().y + (m_Sprite.getTexture()->getSize().y/2) - (m_Text.getLocalBounds().height));
 }
 
 std::string Button::getString()

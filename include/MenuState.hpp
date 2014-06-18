@@ -19,7 +19,7 @@ public:
 private:
     zge::Menu m_MainMenu;
     zge::Menu m_MultiplayerMenu;
-    zge::Menu m_ActiveMenu; //Assign a menu to it.
+    zge::Menu* m_ActiveMenu; //Assign a menu to it.
 
     zge::ResourceManager m_ResMan;
 };

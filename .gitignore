@@ -24,4 +24,4 @@ bin/*
 obj/*
 gmon.out
 *.depend  
-*.layout  
+*.layout

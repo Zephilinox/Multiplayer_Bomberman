@@ -13,6 +13,7 @@
 //#include "GameState.hpp"
 #include "MenuState.hpp"
 #include "StateManager.hpp"
+#include "Constants.hpp"
 
 zge::ResourceManager ResMan;
 zge::StateManager StateMan;
@@ -27,7 +28,7 @@ int main(int argc, char **argv)
     }
 
     //Initialise
-	sf::RenderWindow window(sf::VideoMode(704, 704), "Bomberman");
+	sf::RenderWindow window(sf::VideoMode(Constants::windowWidth, Constants::windowHeight), "Bomberman");
 	//window.setFramerateLimit(60);
 
 	sf::Text fps;
@@ -63,7 +64,7 @@ int main(int argc, char **argv)
 		}
 
 		//Update
-		fps.setPosition(672 - fps.getLocalBounds().width, 0);
+		fps.setPosition(Constants::windowWidth - fps.getLocalBounds().width, 0);
 		ResMan.Update();
 
         StateMan.getActiveState().update(window, prevFrame);
@@ -77,7 +78,7 @@ int main(int argc, char **argv)
 		window.display();
 
 		prevFrame = clock.restart();
-		fps.setString(zge::toString(1.f / prevFrame.asSeconds()));
+        fps.setString(zge::toString(std::floor(1.f / prevFrame.asSeconds())));
 	}
 
 	return 0;
