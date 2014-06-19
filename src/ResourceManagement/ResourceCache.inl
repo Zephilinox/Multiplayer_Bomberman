@@ -20,8 +20,8 @@ ResourceType& ResourceCache<ResourceType>::get(std::string name)
 {
     std::transform(name.begin(), name.end(), name.begin(), ::tolower);
 
-    assert(resources_.count(name));
-    return resources_[name].get()->get();
+    assert(m_Resources.count(name));
+    return m_Resources[name].get()->get();
 }
 
 template <class ResourceType>
@@ -30,7 +30,7 @@ void ResourceCache<ResourceType>::add(std::string name, std::string path)
     std::transform(name.begin(), name.end(), name.begin(), ::tolower);
     std::transform(path.begin(), path.end(), path.begin(), ::tolower);
 
-    resources_[name].reset(new Resource<ResourceType>(path));
+    m_Resources[name].reset(new Resource<ResourceType>(path));
 }
 
 template <class ResourceType>
@@ -38,13 +38,13 @@ void ResourceCache<ResourceType>::remove(std::string name)
 {
     std::transform(name.begin(), name.end(), name.begin(), ::tolower);
 
-    auto it = resources_.find(name);
-    assert(it != resources_.end());
-    resources_.erase(it);
+    auto it = m_Resources.find(name);
+    assert(it != m_Resources.end());
+    m_Resources.erase(it);
 }
 
 template <class ResourceType>
 void ResourceCache<ResourceType>::removeAll()
 {
-    resources_.clear();
+    m_Resources.clear();
 }

@@ -20,9 +20,9 @@ void GameState::handleEvent(sf::Event& event, sf::RenderWindow& window)
 
 void GameState::update(sf::RenderWindow& window, const sf::Time& delta)
 {
-    /*m_Map.update(delta);
+    m_Map.update(delta);
 
-    m_Player1.update(delta, m_Map.getCollisionGrid());
+    /*m_Player1.update(delta, m_Map.getCollisionGrid());
     m_Player2.update(delta, m_Map.getCollisionGrid());
 
     m_BombMan.update(m_Map);
@@ -39,8 +39,8 @@ void GameState::update(sf::RenderWindow& window, const sf::Time& delta)
 
 void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    /*target.draw(m_Map, states);
-    m_BombMan.draw(target, states);
+    target.draw(m_Map, states);
+    /*m_BombMan.draw(target, states);
     target.draw(m_Player1, states);
     target.draw(m_Player2, states);*/
 }

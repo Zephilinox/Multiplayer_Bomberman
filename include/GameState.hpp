@@ -9,7 +9,7 @@
 //SELF
 //#include "Player.hpp"
 #include "State.hpp"
-//#include "Map.hpp"
+#include "Map.hpp"
 //#include "BombManager.hpp"
 
 class GameState : public zge::State
@@ -24,8 +24,8 @@ private:
     //Player m_Player1;
     //Player m_Player2;
 
-    //Map m_Map;
+    Map m_Map;
     //BombManager m_BombMan;
 };
 
-#endif // GAMESTATE_HPP
+#endif //GAMESTATE_HPP

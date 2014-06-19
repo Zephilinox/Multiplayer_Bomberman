@@ -27,7 +27,7 @@ void FPS::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void FPS::update(sf::RenderWindow& window)
 {
-    m_Text.setPosition(Constants::windowWidth - m_Text.getLocalBounds().width, 0);
+    m_Text.setPosition(Constant::windowWidth - m_Text.getLocalBounds().width, 0);
 }
 
 void FPS::setFPS(float fps)

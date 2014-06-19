@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     }
 
     //Initialise
-	sf::RenderWindow window(sf::VideoMode(Constants::windowWidth, Constants::windowHeight), "Bomberman");
+	sf::RenderWindow window(sf::VideoMode(Constant::windowWidth, Constant::windowHeight), "Bomberman");
 	//window.setFramerateLimit(60);
 
     StateMan.addState(zge::StateID::MenuState);

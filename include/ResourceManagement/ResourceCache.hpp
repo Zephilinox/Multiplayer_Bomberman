@@ -52,7 +52,7 @@ public:
     void removeAll();
 
 private:
-    std::map<std::string, std::unique_ptr<Resource<sf::Sound>>> resources_;
+    std::map<std::string, std::unique_ptr<Resource<sf::Sound>>> m_Resources;
 };*/
 
 #include "ResourceManagement/ResourceCache.inl"
