@@ -60,6 +60,7 @@
 		<Unit filename="include/Constants.hpp" />
 		<Unit filename="include/FPS.hpp" />
 		<Unit filename="include/GameState.hpp" />
+		<Unit filename="include/Map.hpp" />
 		<Unit filename="include/Menu.hpp" />
 		<Unit filename="include/MenuState.hpp" />
 		<Unit filename="include/ResourceManagement/Resource.hpp" />
@@ -73,6 +74,7 @@
 		<Unit filename="src/Button.cpp" />
 		<Unit filename="src/FPS.cpp" />
 		<Unit filename="src/GameState.cpp" />
+		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/MenuState.cpp" />
 		<Unit filename="src/ResourceManagement/Resource.cpp" />

@@ -25,3 +25,5 @@ obj/*
 gmon.out
 *.depend  
 *.layout
+Multiplayer_Bomberman.depend
+Multiplayer_Bomberman.layout
