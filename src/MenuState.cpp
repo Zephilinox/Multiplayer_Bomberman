@@ -21,6 +21,11 @@ MenuState::MenuState()
     m_ActiveMenu = &m_MainMenu;
 }
 
+MenuState::~MenuState()
+{
+    std::cout << "[MenuState] Destructor\n";
+}
+
 void MenuState::handleEvent(sf::Event& event, sf::RenderWindow& window)
 {
     switch (event.type)

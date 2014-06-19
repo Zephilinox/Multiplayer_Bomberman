@@ -14,12 +14,13 @@
 #include "StateManager.hpp"
 #include "Constants.hpp"
 #include "FPS.hpp"
-
-zge::StateManager StateMan;
-FPS fps;
+#include "ResourceManagement/ResourceManager.hpp"
 
 int main(int argc, char **argv)
 {
+    zge::StateManager StateMan;
+    FPS fps;
+
     std::cout << "###Main###\n";
 
     for (int i = 0; i < argc; ++i)

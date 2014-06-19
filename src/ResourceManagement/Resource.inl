@@ -8,7 +8,7 @@ Resource<ResourceType>::Resource(std::string n)
 {
     std::transform(m_Name.begin(), m_Name.end(), m_Name.begin(), ::tolower);
 
-    //std::cout << "[Resource] Constructor | " << m_Name << "\n";
+    std::cout << "[Resource] Constructor | " << m_Name << "\n";
     if (ResourceManager<ResourceType>::getInstance().create(m_Name))
     {
         assert(ResourceManager<ResourceType>::getInstance().get(m_Name).loadFromFile(m_Name));
@@ -18,7 +18,7 @@ Resource<ResourceType>::Resource(std::string n)
 template <class ResourceType>
 Resource<ResourceType>::~Resource()
 {
-    //std::cout << "[Resource] Destructor | " << m_Name << "\n";
+    std::cout << "[Resource] Destructor | " << m_Name << "\n";
     ResourceManager<ResourceType>::getInstance().destroy(m_Name);
 }
 
@@ -44,8 +44,8 @@ ResourceType& Resource<ResourceType>::get()
 template <class ResourceType>
 void Resource<ResourceType>::copyResource(const Resource<ResourceType>& res)
 {
-    //std::cout << "[Resource] Copied\n";
-    //std::cout << "\tthis = " << m_Name << "\n\tother = " << res.m_Name << "\n";
+    std::cout << "[Resource] Copied\n";
+    std::cout << "\tthis = " << m_Name << "\n\tother = " << res.m_Name << "\n";
 
     if (!m_Name.empty())
     {

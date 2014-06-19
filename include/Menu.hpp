@@ -3,6 +3,7 @@
 
 //STD
 #include <vector>
+#include <memory>
 
 //3RD
 #include <SFML/Graphics.hpp>
@@ -27,7 +28,7 @@ public:
     void calculateButtonPositions();
 
 private:
-    std::vector<Button> m_Buttons;
+    std::vector<std::shared_ptr<Button>> m_Buttons;
 };
 
 } //ZGE

@@ -58,7 +58,11 @@ void ResourceManager<ResourceType>::destroy(std::string name)
     std::transform(name.begin(), name.end(), name.begin(), ::tolower);
 
     auto it = m_Resources.find(name);
-    assert(it != m_Resources.end());
+    if (it == m_Resources.end())
+    {
+        std::cout << "[ResourceManager] Cannot find the resource " << name << " to destroy\n";
+        return;
+    }
 
     if (it->second.first == 1)
     {
@@ -69,7 +73,6 @@ void ResourceManager<ResourceType>::destroy(std::string name)
     {
         it->second.first--;
         std::cout << "[ResourceManager] Decreased ref count of " << name << " to " << it->second.first << "\n";
-
     }
     else
     {
