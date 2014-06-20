@@ -33,17 +33,14 @@ private:
     sf::Clock m_MoveTimer;
     //sf::Clock m_BombSpawnTimer;
 
-    sf::Keyboard::Key m_LastKeyPressed = sf::Keyboard::Key::Unknown;
+    sf::Keyboard::Key m_LastVerticalKeyPressed = sf::Keyboard::Key::Unknown;
+    sf::Keyboard::Key m_LastHorizontalKeyPressed = sf::Keyboard::Key::Unknown;
+
     sf::Keyboard::Key m_Up = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_Left = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_Down = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_Right = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_Bomb = sf::Keyboard::Key::Unknown;
-
-    bool m_UpPressed;
-    bool m_DownPressed;
-    bool m_LeftPressed;
-    bool m_RightPressed;
 
     sf::Vector2f m_Source;
     sf::Vector2f m_Destination;

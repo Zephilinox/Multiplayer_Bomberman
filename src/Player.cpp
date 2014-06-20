@@ -10,11 +10,7 @@
 #include "Constants.hpp"
 
 Player::Player():
-m_Texture("textures/player.png"),
-m_UpPressed(false),
-m_DownPressed(false),
-m_LeftPressed(false),
-m_RightPressed(false)
+m_Texture("textures/player.png")
 {
     m_Sprite.setTexture(m_Texture.get());
     m_Sprite.setPosition(Constant::tileSize, Constant::tileSize);
@@ -44,19 +40,56 @@ void Player::handleEvent(sf::Event& event)
     if (event.type == sf::Event::KeyPressed)
     {
         if (event.key.code == m_Up ||
-            event.key.code == m_Left ||
-            event.key.code == m_Down ||
-            event.key.code == m_Right)
+            event.key.code == m_Down)
         {
-            m_LastKeyPressed = event.key.code;
+            m_LastVerticalKeyPressed = event.key.code;
+        }
+        else if (event.key.code == m_Left ||
+                 event.key.code == m_Right)
+        {
+            m_LastHorizontalKeyPressed = event.key.code;
         }
     }
-
-    if (event.type == sf::Event::KeyReleased)
+    else if (event.type == sf::Event::KeyReleased)
     {
-        if (m_LastKeyPressed == event.key.code);
+        if (event.key.code == m_Up &&
+            m_LastVerticalKeyPressed == m_Up &&
+            sf::Keyboard::isKeyPressed(m_Down))
         {
-            m_LastKeyPressed = sf::Keyboard::Key::Unknown;
+            m_LastVerticalKeyPressed = m_Down;
+            return;
+        }
+        else if (event.key.code == m_Down &&
+                 m_LastVerticalKeyPressed == m_Down &&
+                 sf::Keyboard::isKeyPressed(m_Up))
+        {
+            m_LastVerticalKeyPressed = m_Up;
+            return;
+        }
+        else if (event.key.code == m_Up ||
+                 event.key.code == m_Down)
+        {
+            m_LastVerticalKeyPressed = sf::Keyboard::Key::Unknown;
+        }
+
+        if (event.key.code == m_Left &&
+            m_LastHorizontalKeyPressed == m_Left &&
+            sf::Keyboard::isKeyPressed(m_Right))
+        {
+            m_LastHorizontalKeyPressed = m_Right;
+            return;
+        }
+        else if (event.key.code == m_Right &&
+                 m_LastHorizontalKeyPressed == m_Right &&
+                 sf::Keyboard::isKeyPressed(m_Left))
+        {
+            m_LastHorizontalKeyPressed = m_Left;
+            return;
+        }
+        else if (event.key.code == m_Left ||
+                 event.key.code == m_Right)
+        {
+            m_LastHorizontalKeyPressed = sf::Keyboard::Key::Unknown;
         }
     }
 }
@@ -73,52 +106,45 @@ void Player::update(sf::Time delta, Map& map)
 
     if (m_Source == m_Destination) //Not moving
     {
-        if (m_LastKeyPressed == sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
+        if (m_LastVerticalKeyPressed != sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
         {
-            if (sf::Keyboard::isKeyPressed(m_Up))
+            if (m_LastVerticalKeyPressed == m_Up)
             {
                 m_Destination.y = m_Source.y - Constant::tileSize;
             }
-            else if (sf::Keyboard::isKeyPressed(m_Left))
-            {
-                m_Destination.x = m_Source.x - Constant::tileSize;
-            }
-            else if (sf::Keyboard::isKeyPressed(m_Down))
+            else if (m_LastVerticalKeyPressed == m_Down)
             {
                 m_Destination.y = m_Source.y + Constant::tileSize;
             }
-            else if (sf::Keyboard::isKeyPressed(m_Right))
-            {
-                m_Destination.x = m_Source.x + Constant::tileSize;
-            }
-            else
-            {
-                m_Destination = m_Source;
-            }
         }
-        else
+
+        if (map.getCollisionGridSquare(sf::Vector2i(m_Destination.x / Constant::tileSize, m_Destination.y / Constant::tileSize)) != GridValue::Empty)
         {
-            if (m_LastKeyPressed == m_Up && sf::Keyboard::isKeyPressed(m_Up)) //Using LastKeyPressed so that the newest movement key press changes direction, making movement more fluid
-            {
-                m_Destination.y = m_Source.y - Constant::tileSize;
-            }
-            else if (m_LastKeyPressed == m_Left && sf::Keyboard::isKeyPressed(m_Left))
+            m_Destination = m_Source;
+        }
+
+        if (m_LastHorizontalKeyPressed != sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
+        {
+            if (m_LastHorizontalKeyPressed == m_Left)
             {
                 m_Destination.x = m_Source.x - Constant::tileSize;
             }
-            else if (m_LastKeyPressed == m_Down && sf::Keyboard::isKeyPressed(m_Down))
-            {
-                m_Destination.y = m_Source.y + Constant::tileSize;
-            }
-            else if (m_LastKeyPressed == m_Right && sf::Keyboard::isKeyPressed(m_Right))
+            else if (m_LastHorizontalKeyPressed == m_Right)
             {
                 m_Destination.x = m_Source.x + Constant::tileSize;
             }
-            else
-            {
-                m_Destination = m_Source;
-            }
         }
+
+        if (map.getCollisionGridSquare(sf::Vector2i(m_Destination.x / Constant::tileSize, m_Destination.y / Constant::tileSize)) != GridValue::Empty)
+        {
+            m_Destination = m_Source;
+        }
+
+        /*if (m_LastVerticalKeyPressed == sf::Keyboard::Key::Unknown &&
+            m_LastHorizontalKeyPressed == sf::Keyboard::Key::Unknown)
+        {
+            m_Destination = m_Source;
+        }*/
     }
 
     if (map.getCollisionGridSquare(sf::Vector2i(m_Destination.x / Constant::tileSize, m_Destination.y / Constant::tileSize)) == GridValue::Empty) //Valid destination
