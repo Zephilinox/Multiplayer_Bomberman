@@ -3,6 +3,8 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cmath>
+#include <ctime>
 
 //3RD
 #include <SFML/Graphics.hpp>
@@ -18,6 +20,8 @@
 
 int main(int argc, char **argv)
 {
+    std::srand(std::time(nullptr));
+
     zge::StateManager StateMan;
     FPS fps;
 

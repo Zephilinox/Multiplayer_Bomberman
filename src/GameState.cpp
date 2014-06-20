@@ -1,10 +1,18 @@
 #include "GameState.hpp"
 
+//STD
+
+//3RD
+
+//SELF
+#include "Constants.hpp"
+
 GameState::GameState()
 {
     this->stateID = zge::StateID::GameState;
     this->targetState = stateID;
-
+    m_Map.setMapSize(sf::Vector2i(Constant::windowHeight,
+                                  Constant::windowHeight));
     /*m_Player1.useWASD();
     m_Player1.setColor(sf::Color(200, 0, 0));
 

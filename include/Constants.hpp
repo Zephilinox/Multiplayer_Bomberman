@@ -1,7 +1,8 @@
 
 namespace Constant
 {
-    const int windowWidth = 704;
-    const int windowHeight = 704;
+    const int windowWidth = 648;
+    const int windowHeight = 552;
+    const int tileSize = 24;
 }
 

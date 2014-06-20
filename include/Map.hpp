@@ -10,6 +10,8 @@
 //SELF
 #include "ResourceManagement/ResourceCache.hpp"
 
+enum GridValue {Empty = 0, WallIndestructible, WallDestructible};
+
 class Map : public sf::Drawable
 {
 public:
@@ -17,15 +19,24 @@ public:
     void update(const sf::Time& delta);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-    std::vector<std::vector<int>> getCollisionGrid();
+    int getCollisionGridSquare(sf::Vector2i pos);
     void setCollisionGridSquare(sf::Vector2i pos, int val);
+
+    void setMapSize(sf::Vector2i size);
 
 private:
     sf::VertexArray m_LevelFloor;
-    sf::RenderTexture m_World;
+    //sf::RenderTexture m_World;
 	std::vector<std::vector<int>> m_CollisionGrid;
 
 	mutable ResourceCache<sf::Texture> m_Textures;
+
+	sf::Vector2i m_MapSize;
+
+	void generateMap();
+	void generateFloor();
+	void generateIndestructibleWalls();
+	void generateDestructibleWalls();
 };
 
 #endif // MAP_HPP
