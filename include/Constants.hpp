@@ -1,3 +1,7 @@
+#ifndef CONSTANTS_HPP
+#define CONSTANTS_HPP
+
+enum GridValue {Empty = 0, WallIndestructible, WallDestructible};
 
 namespace Constant
 {
@@ -6,3 +10,4 @@ namespace Constant
     const int tileSize = 24;
 }
 
+#endif //CONSTANTS_HPP

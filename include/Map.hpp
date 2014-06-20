@@ -9,8 +9,7 @@
 
 //SELF
 #include "ResourceManagement/ResourceCache.hpp"
-
-enum GridValue {Empty = 0, WallIndestructible, WallDestructible};
+#include "Constants.hpp"
 
 class Map : public sf::Drawable
 {

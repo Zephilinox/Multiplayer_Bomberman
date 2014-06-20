@@ -89,20 +89,7 @@ void Map::generateDestructibleWalls()
 	{
 		for (unsigned int w = 0; w < m_CollisionGrid[0].size(); ++w)
 		{
-			/*if (h % 2 == 0 && w % 2 == 0)
-			{
-			    if (m_CollisionGrid[h][w] == GridValue::Empty)
-                {
-                    m_CollisionGrid[h][w] = GridValue::WallDestructible;
-                }
-			}*/
-
-            /*if (!((h <= 2 && w <= 2) || //top left
-                (h <= 2 && w >= m_CollisionGrid[0].size() - 3) || //top right
-                (h >= m_CollisionGrid.size() - 3 && w <= 2) || //bottom left
-                (h >= m_CollisionGrid.size() - 3 && w >= m_CollisionGrid[0].size() - 3))) //bottom right
-            {*/
-            if (rand() % 1000 < 700)
+            if (rand() % 1000 < 100)
             {
                 if (m_CollisionGrid[h][w] == GridValue::Empty)
                 {
@@ -164,9 +151,9 @@ void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 int Map::getCollisionGridSquare(sf::Vector2i pos)
 {
-    if (pos.x <= 0 ||
+    if (pos.x < 0 ||
         unsigned(pos.x) >= m_CollisionGrid[pos.y].size() ||
-        pos.y <= 0 ||
+        pos.y < 0 ||
         unsigned(pos.y) >= m_CollisionGrid.size())
     {
         std::cout << "[GET] The requested collision grid square [" << pos.y << "][" << pos.x <<"] is invalid!\n";
@@ -178,9 +165,9 @@ int Map::getCollisionGridSquare(sf::Vector2i pos)
 
 void Map::setCollisionGridSquare(sf::Vector2i pos, int val)
 {
-    if (pos.x <= 0 ||
+    if (pos.x < 0 ||
         unsigned(pos.x) >= m_CollisionGrid[pos.y].size() ||
-        pos.y <= 0 ||
+        pos.y < 0 ||
         unsigned(pos.y) >= m_CollisionGrid.size())
     {
         std::cout << "[SET] The requested collision grid square [" << pos.y << "][" << pos.x <<"] is invalid!\n";

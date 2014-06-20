@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 
 //SELF
-//#include "Player.hpp"
+#include "Player.hpp"
 #include "State.hpp"
 #include "Map.hpp"
 //#include "BombManager.hpp"
@@ -21,8 +21,8 @@ public:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-    //Player m_Player1;
-    //Player m_Player2;
+    Player m_Player1;
+    Player m_Player2;
 
     Map m_Map;
     //BombManager m_BombMan;
