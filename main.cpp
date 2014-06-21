@@ -37,7 +37,6 @@ int main(int argc, char **argv)
 	//window.setFramerateLimit(60);
 
     StateMan.addState(zge::StateID::MenuState);
-    StateMan.addState(zge::StateID::GameState);
 
 	sf::Clock clock;
 	sf::Time prevFrame;

@@ -85,7 +85,9 @@ State& StateManager::getActiveState()
 
     if (m_States[m_ActiveStatePosition]->stateID != m_States[m_ActiveStatePosition]->targetState)
     {
-        this->changeState(m_States[m_ActiveStatePosition]->targetState);
+        auto newTargetState = m_States[m_ActiveStatePosition]->targetState; //Store which state to switch to
+        m_States[m_ActiveStatePosition]->targetState = m_States[m_ActiveStatePosition]->stateID; //reset the state ID of the original state to its own ID
+        this->changeState(newTargetState); //switch states base on the state we need to switch to
     }
 
     return *m_States[m_ActiveStatePosition];

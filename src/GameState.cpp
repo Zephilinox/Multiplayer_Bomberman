@@ -39,10 +39,6 @@ void GameState::update(sf::RenderWindow& window, const sf::Time& delta)
     {
         this->targetState = zge::StateID::MenuState;
     }
-    else
-    {
-        this->targetState = this->stateID;
-    }
 }
 
 void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const

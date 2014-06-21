@@ -111,7 +111,7 @@ void Player::handleEvent(sf::Event& event)
 void Player::verticalMovement()
 {
     if (m_Source == m_Destination &&
-        m_LastVerticalKeyPressed != sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
+        m_LastVerticalKeyPressed != sf::Keyboard::Key::Unknown)
     {
         if (m_LastVerticalKeyPressed == m_Up)
         {
@@ -127,7 +127,7 @@ void Player::verticalMovement()
 void Player::horizontalMovement()
 {
     if (m_Source == m_Destination &&
-        m_LastHorizontalKeyPressed != sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
+        m_LastHorizontalKeyPressed != sf::Keyboard::Key::Unknown)
     {
         if (m_LastHorizontalKeyPressed == m_Left)
         {
@@ -153,23 +153,11 @@ void Player::update(sf::Time delta, Map& map)
     if (m_LastKeyPressed == m_LastHorizontalKeyPressed)
     {
         this->horizontalMovement();
-
-        if (map.getCollisionGridSquare(sf::Vector2i(m_Destination.x / Constant::tileSize, m_Destination.y / Constant::tileSize)) != GridValue::Empty)
-        {
-            m_Destination = m_Source;
-        }
-
         this->verticalMovement();
     }
     else if (m_LastKeyPressed == m_LastVerticalKeyPressed)
     {
         this->verticalMovement();
-
-        if (map.getCollisionGridSquare(sf::Vector2i(m_Destination.x / Constant::tileSize, m_Destination.y / Constant::tileSize)) != GridValue::Empty)
-        {
-            m_Destination = m_Source;
-        }
-
         this->horizontalMovement();
     }
 
