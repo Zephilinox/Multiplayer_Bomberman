@@ -33,6 +33,7 @@ private:
     sf::Clock m_MoveTimer;
     //sf::Clock m_BombSpawnTimer;
 
+    sf::Keyboard::Key m_LastKeyPressed = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_LastVerticalKeyPressed = sf::Keyboard::Key::Unknown;
     sf::Keyboard::Key m_LastHorizontalKeyPressed = sf::Keyboard::Key::Unknown;
 
@@ -48,6 +49,9 @@ private:
     sf::RectangleShape m_SourceTile;
     sf::RectangleShape m_DestinationTile;
     sf::RectangleShape m_SpriteTile;
+
+    void verticalMovement();
+    void horizontalMovement();
 };
 
 #endif // PLAYER_HPP

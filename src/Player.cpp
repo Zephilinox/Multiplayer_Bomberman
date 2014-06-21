@@ -43,11 +43,13 @@ void Player::handleEvent(sf::Event& event)
             event.key.code == m_Down)
         {
             m_LastVerticalKeyPressed = event.key.code;
+            m_LastKeyPressed = event.key.code;
         }
         else if (event.key.code == m_Left ||
                  event.key.code == m_Right)
         {
             m_LastHorizontalKeyPressed = event.key.code;
+            m_LastKeyPressed = event.key.code;
         }
     }
     else if (event.type == sf::Event::KeyReleased)
@@ -57,6 +59,7 @@ void Player::handleEvent(sf::Event& event)
             sf::Keyboard::isKeyPressed(m_Down))
         {
             m_LastVerticalKeyPressed = m_Down;
+            m_LastKeyPressed = m_Down;
             return;
         }
         else if (event.key.code == m_Down &&
@@ -64,12 +67,14 @@ void Player::handleEvent(sf::Event& event)
                  sf::Keyboard::isKeyPressed(m_Up))
         {
             m_LastVerticalKeyPressed = m_Up;
+            m_LastKeyPressed = m_Up;
             return;
         }
         else if (event.key.code == m_Up ||
                  event.key.code == m_Down)
         {
             m_LastVerticalKeyPressed = sf::Keyboard::Key::Unknown;
+            m_LastKeyPressed = m_LastHorizontalKeyPressed;
         }
 
         if (event.key.code == m_Left &&
@@ -77,6 +82,7 @@ void Player::handleEvent(sf::Event& event)
             sf::Keyboard::isKeyPressed(m_Right))
         {
             m_LastHorizontalKeyPressed = m_Right;
+            m_LastKeyPressed = m_Right;
             return;
         }
         else if (event.key.code == m_Right &&
@@ -84,12 +90,52 @@ void Player::handleEvent(sf::Event& event)
                  sf::Keyboard::isKeyPressed(m_Left))
         {
             m_LastHorizontalKeyPressed = m_Left;
+            m_LastKeyPressed = m_Left;
             return;
         }
         else if (event.key.code == m_Left ||
                  event.key.code == m_Right)
         {
             m_LastHorizontalKeyPressed = sf::Keyboard::Key::Unknown;
+            m_LastKeyPressed = m_LastVerticalKeyPressed;
+        }
+
+        if (m_LastHorizontalKeyPressed == sf::Keyboard::Key::Unknown &&
+            m_LastVerticalKeyPressed == sf::Keyboard::Key::Unknown)
+        {
+            m_LastKeyPressed = sf::Keyboard::Key::Unknown;
+        }
+    }
+}
+
+void Player::verticalMovement()
+{
+    if (m_Source == m_Destination &&
+        m_LastVerticalKeyPressed != sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
+    {
+        if (m_LastVerticalKeyPressed == m_Up)
+        {
+            m_Destination.y = m_Source.y - Constant::tileSize;
+        }
+        else if (m_LastVerticalKeyPressed == m_Down)
+        {
+            m_Destination.y = m_Source.y + Constant::tileSize;
+        }
+    }
+}
+
+void Player::horizontalMovement()
+{
+    if (m_Source == m_Destination &&
+        m_LastHorizontalKeyPressed != sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
+    {
+        if (m_LastHorizontalKeyPressed == m_Left)
+        {
+            m_Destination.x = m_Source.x - Constant::tileSize;
+        }
+        else if (m_LastHorizontalKeyPressed == m_Right)
+        {
+            m_Destination.x = m_Source.x + Constant::tileSize;
         }
     }
 }
@@ -104,47 +150,27 @@ void Player::update(sf::Time delta, Map& map)
 
     //Look in to Up+Right with a wall blocking Right. Needs to still move Up.
 
-    if (m_Source == m_Destination) //Not moving
+    if (m_LastKeyPressed == m_LastHorizontalKeyPressed)
     {
-        if (m_LastVerticalKeyPressed != sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
-        {
-            if (m_LastVerticalKeyPressed == m_Up)
-            {
-                m_Destination.y = m_Source.y - Constant::tileSize;
-            }
-            else if (m_LastVerticalKeyPressed == m_Down)
-            {
-                m_Destination.y = m_Source.y + Constant::tileSize;
-            }
-        }
+        this->horizontalMovement();
 
         if (map.getCollisionGridSquare(sf::Vector2i(m_Destination.x / Constant::tileSize, m_Destination.y / Constant::tileSize)) != GridValue::Empty)
         {
             m_Destination = m_Source;
         }
 
-        if (m_LastHorizontalKeyPressed != sf::Keyboard::Key::Unknown) //Last key pressed was not a movement one
-        {
-            if (m_LastHorizontalKeyPressed == m_Left)
-            {
-                m_Destination.x = m_Source.x - Constant::tileSize;
-            }
-            else if (m_LastHorizontalKeyPressed == m_Right)
-            {
-                m_Destination.x = m_Source.x + Constant::tileSize;
-            }
-        }
+        this->verticalMovement();
+    }
+    else if (m_LastKeyPressed == m_LastVerticalKeyPressed)
+    {
+        this->verticalMovement();
 
         if (map.getCollisionGridSquare(sf::Vector2i(m_Destination.x / Constant::tileSize, m_Destination.y / Constant::tileSize)) != GridValue::Empty)
         {
             m_Destination = m_Source;
         }
 
-        /*if (m_LastVerticalKeyPressed == sf::Keyboard::Key::Unknown &&
-            m_LastHorizontalKeyPressed == sf::Keyboard::Key::Unknown)
-        {
-            m_Destination = m_Source;
-        }*/
+        this->horizontalMovement();
     }
 
     if (map.getCollisionGridSquare(sf::Vector2i(m_Destination.x / Constant::tileSize, m_Destination.y / Constant::tileSize)) == GridValue::Empty) //Valid destination

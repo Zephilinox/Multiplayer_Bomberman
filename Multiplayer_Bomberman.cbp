@@ -63,6 +63,7 @@
 		<Unit filename="include/Map.hpp" />
 		<Unit filename="include/Menu.hpp" />
 		<Unit filename="include/MenuState.hpp" />
+		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/ResourceManagement/Resource.hpp" />
 		<Unit filename="include/ResourceManagement/ResourceCache.hpp" />
 		<Unit filename="include/ResourceManagement/ResourceManager.hpp" />
@@ -77,6 +78,7 @@
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/MenuState.cpp" />
+		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/ResourceManagement/Resource.cpp" />
 		<Unit filename="src/ResourceManagement/Resource.inl" />
 		<Unit filename="src/ResourceManagement/ResourceCache.inl" />
