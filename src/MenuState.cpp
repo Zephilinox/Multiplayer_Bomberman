@@ -7,12 +7,12 @@
 
 //SELF
 #include "Menu.hpp"
+#include "StateManager.hpp"
 
 MenuState::MenuState()
 {
     this->stateID = zge::StateID::MenuState;
     this->targetState = this->stateID;
-    m_StateMan = new zge::StateManager;
 
     //Some sort of memory leak regarding fonts and textures with these buttons
     m_MainMenu.addButton("button", "New Game");
@@ -53,8 +53,8 @@ void MenuState::update(sf::RenderWindow& window, const sf::Time& delta)
     {
         if (m_ActiveMenu->mouseClicked("New Game"))
         {
-            m_StateMan->deleteState(zge::StateID::GameState);
-            m_StateMan->addState(zge::StateID::GameState);
+            zge::StateManager::getInstance().deleteState(zge::StateID::GameState);
+            zge::StateManager::getInstance().addState(zge::StateID::GameState);
             this->targetState = zge::StateID::GameState;
             m_ActiveMenu = &m_PauseMenu;
         }

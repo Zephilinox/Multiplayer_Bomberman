@@ -17,14 +17,23 @@ namespace zge
 class StateManager
 {
 public:
-    StateManager();
+    ~StateManager();
+
+    static StateManager& getInstance();
+    static void deleteInstance();
+
     void addState(StateID s);
     void changeState(StateID s);
     void deleteState(StateID s);
     State& getActiveState();
+
 private:
-    static std::vector<std::shared_ptr<State>> m_States;
-    static unsigned int m_ActiveStatePosition;
+    StateManager();
+
+    std::vector<std::shared_ptr<State>> m_States;
+    unsigned int m_ActiveStatePosition;
+
+    static std::unique_ptr<StateManager> m_Instance;
 };
 
 } //ZGE

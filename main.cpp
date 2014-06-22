@@ -17,13 +17,11 @@
 #include "Constants.hpp"
 #include "FPS.hpp"
 #include "ResourceManagement/ResourceManager.hpp"
+#include "Game.hpp"
 
 int main(int argc, char **argv)
 {
     std::srand(std::time(nullptr));
-
-    zge::StateManager StateMan;
-    FPS fps;
 
     std::cout << "###Main###\n";
 
@@ -32,50 +30,11 @@ int main(int argc, char **argv)
         std::cout << argv[i] << "\n";
     }
 
-    //Initialise
-	sf::RenderWindow window(sf::VideoMode(Constant::windowWidth, Constant::windowHeight), "Bomberman");
-	//window.setFramerateLimit(60);
+    {
+        Game game;
+        game.run();
+    }
 
-    StateMan.addState(zge::StateID::MenuState);
-
-	sf::Clock clock;
-	sf::Time prevFrame;
-
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-            switch(event.type)
-            {
-                case sf::Event::Closed:
-                {
-                    window.close();
-                    break;
-                }
-                default:
-                {
-                }
-            }
-            StateMan.getActiveState().handleEvent(event, window);
-		}
-
-		//Update
-		fps.update(window);
-
-        StateMan.getActiveState().update(window, prevFrame);
-
-		//Draw
-		window.clear(sf::Color(40, 40, 40));
-
-        window.draw(StateMan.getActiveState());
-		window.draw(fps);
-		window.display();
-
-		prevFrame = clock.restart();
-        fps.setFPS(std::floor(1.f / prevFrame.asSeconds()));
-	}
-
-    std::cout << "exiting\n";
+    std::cout << "Exiting\n";
 	return 0;
 }

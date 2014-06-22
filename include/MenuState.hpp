@@ -8,12 +8,6 @@
 //SELF
 #include "State.hpp"
 #include "Menu.hpp"
-#include "StateManager.hpp"
-
-namespace zge
-{
-    class StateManager;
-}
 
 class MenuState : public zge::State
 {
@@ -23,12 +17,11 @@ public:
     virtual void handleEvent(sf::Event& event, sf::RenderWindow& window);
     virtual void update(sf::RenderWindow& window, const sf::Time& delta);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
 private:
     zge::Menu m_MainMenu;
     zge::Menu m_PauseMenu;
     zge::Menu* m_ActiveMenu; //Assign a menu to it.
-
-    zge::StateManager* m_StateMan;
 };
 
 #endif // MENUSTATE_HPP

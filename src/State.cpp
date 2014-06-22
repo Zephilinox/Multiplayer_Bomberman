@@ -30,11 +30,4 @@ void State::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 }
 
-void State::print()
-{
-    if (stateID == StateID::MenuState)
-    {
-        std::cout << "MenuState - Print\n";
-    }
-}
 } //ZGE

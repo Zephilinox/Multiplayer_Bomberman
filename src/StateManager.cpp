@@ -6,18 +6,37 @@
 #include <memory>
 
 //SELF
-//#include "GameState.hpp"
+#include "GameState.hpp"
 #include "MenuState.hpp"
 
 namespace zge
 {
 
-std::vector<std::shared_ptr<State>> StateManager::m_States;
-unsigned int StateManager::m_ActiveStatePosition;
+std::unique_ptr<StateManager> StateManager::m_Instance;
 
 StateManager::StateManager()
 {
     m_ActiveStatePosition = 0;
+}
+
+StateManager::~StateManager()
+{
+    std::cout << "[StateManager] Destructor\n";
+}
+
+StateManager& StateManager::getInstance()
+{
+    if (m_Instance == nullptr)
+    {
+        m_Instance = std::unique_ptr<StateManager>(new StateManager);
+    }
+
+    return *m_Instance.get();
+}
+
+void StateManager::deleteInstance()
+{
+    m_Instance.reset(nullptr);
 }
 
 void StateManager::addState(StateID s)
@@ -63,6 +82,8 @@ void StateManager::changeState(StateID s)
             return;
         }
     }
+
+    std::cout << "Could not change state\n";
 }
 
 void StateManager::deleteState(StateID s)
