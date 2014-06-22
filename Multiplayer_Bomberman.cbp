@@ -59,6 +59,7 @@
 		<Unit filename="include/Button.hpp" />
 		<Unit filename="include/Constants.hpp" />
 		<Unit filename="include/FPS.hpp" />
+		<Unit filename="include/Game.hpp" />
 		<Unit filename="include/GameState.hpp" />
 		<Unit filename="include/Map.hpp" />
 		<Unit filename="include/Menu.hpp" />
@@ -74,6 +75,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Button.cpp" />
 		<Unit filename="src/FPS.cpp" />
+		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/GameState.cpp" />
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/Menu.cpp" />
