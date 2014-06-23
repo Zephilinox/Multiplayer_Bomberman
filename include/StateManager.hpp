@@ -38,4 +38,4 @@ private:
 
 } //ZGE
 
-#endif // STATEMANAGER_HPP
+#endif //STATEMANAGER_HPP
