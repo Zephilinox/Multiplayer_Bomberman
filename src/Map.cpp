@@ -11,9 +11,9 @@
 
 Map::Map()
 {
-    m_Textures.add("Floor", "textures/tile1.png");
-    m_Textures.add("IndestructibleWall", "textures/tile2.png");
-    m_Textures.add("DestructibleWall", "textures/tile3.png");
+    m_Textures.add("Floor", "textures/Floor.png");
+    m_Textures.add("IndestructibleWall", "textures/IndestructibleWall.png");
+    m_Textures.add("DestructibleWall", "textures/DestructibleWall.png");
 
     this->setMapSize(sf::Vector2i(Constant::windowWidth, Constant::windowHeight));
 	this->generateMap();

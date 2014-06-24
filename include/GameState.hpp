@@ -11,6 +11,7 @@
 #include "State.hpp"
 #include "Map.hpp"
 //#include "BombManager.hpp"
+#include "GUI.hpp"
 
 class GameState : public zge::State
 {
@@ -26,6 +27,7 @@ private:
 
     Map m_Map;
     //BombManager m_BombMan;
+    GUI m_GUI;
 };
 
 #endif //GAMESTATE_HPP

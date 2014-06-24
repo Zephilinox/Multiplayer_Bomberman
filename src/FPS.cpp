@@ -13,6 +13,7 @@ m_UpdateRate(100),
 m_Font("fonts/arial.ttf")
 {
     m_Text.setFont(m_Font.get());
+    m_Text.setScale(0.7, 0.7);
 }
 
 FPS::~FPS()
@@ -27,7 +28,7 @@ void FPS::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void FPS::update(sf::RenderWindow& window)
 {
-    m_Text.setPosition(Constant::windowWidth - m_Text.getLocalBounds().width, 0);
+    m_Text.setPosition(0, 0);
 }
 
 void FPS::setFPS(float fps)

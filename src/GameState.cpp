@@ -14,10 +14,10 @@ GameState::GameState()
     m_Map.setMapSize(sf::Vector2i(Constant::windowHeight,
                                   Constant::windowHeight));
     m_Player1.useWASD();
-    m_Player1.setColor(sf::Color(200, 0, 0));
+    m_Player1.setColor(sf::Color(200, 50, 50));
 
     m_Player2.useArrows();
-    m_Player2.setColor(sf::Color(0, 0, 200));
+    m_Player2.setColor(sf::Color(0, 100, 255));
 }
 
 void GameState::handleEvent(sf::Event& event, sf::RenderWindow& window)
@@ -47,4 +47,5 @@ void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
     //m_BombMan.draw(target, states);
     target.draw(m_Player1, states);
     target.draw(m_Player2, states);
+    target.draw(m_GUI);
 }
