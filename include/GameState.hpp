@@ -22,10 +22,11 @@ public:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
+    Map m_Map;
+
     Player m_Player1;
     Player m_Player2;
 
-    Map m_Map;
     //BombManager m_BombMan;
     GUI m_GUI;
 };

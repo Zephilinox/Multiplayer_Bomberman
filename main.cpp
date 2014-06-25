@@ -19,6 +19,13 @@
 #include "ResourceManagement/ResourceManager.hpp"
 #include "Game.hpp"
 
+/*
+TODO
+
+Bombs
+
+*/
+
 int main(int argc, char **argv)
 {
     std::srand(std::time(nullptr));

@@ -9,13 +9,13 @@
 //SELF
 #include "Constants.hpp"
 
-Map::Map()
+Map::Map(sf::Vector2i size)
 {
     m_Textures.add("Floor", "textures/Floor.png");
     m_Textures.add("IndestructibleWall", "textures/IndestructibleWall.png");
     m_Textures.add("DestructibleWall", "textures/DestructibleWall.png");
 
-    this->setMapSize(sf::Vector2i(Constant::windowWidth, Constant::windowHeight));
+    this->setMapSize(size);
 	this->generateMap();
 }
 
@@ -188,4 +188,20 @@ void Map::setMapSize(sf::Vector2i size)
 
     m_MapSize = size;
     this->generateMap();
+}
+
+sf::Vector2f Map::getValidSpawnLocation()
+{
+    if (m_CollisionGrid[1][1] != GridValue::Player)
+    {
+        m_CollisionGrid[1][1] = GridValue::Player;
+        return sf::Vector2f(Constant::tileSize, Constant::tileSize);
+    }
+    else if (m_CollisionGrid[m_CollisionGrid.size() - 2][m_CollisionGrid[0].size() - 2] != GridValue::Player)
+    {
+        m_CollisionGrid[m_CollisionGrid.size() - 2][m_CollisionGrid[0].size() - 2] = GridValue::Player;
+        return sf::Vector2f(Constant::tileSize * (m_CollisionGrid[0].size() - 2), Constant::tileSize * (m_CollisionGrid.size() - 2));
+    }
+
+    return sf::Vector2f(0, 0);
 }

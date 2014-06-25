@@ -5,6 +5,7 @@
 //3RD
 
 //SELF
+#include "Constants.hpp"
 
 Game::Game()
 {

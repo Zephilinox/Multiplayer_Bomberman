@@ -7,17 +7,15 @@
 //SELF
 #include "Constants.hpp"
 
-GameState::GameState()
+GameState::GameState():
+m_Map(sf::Vector2i(Constant::windowHeight, Constant::windowHeight)),
+m_Player1(m_Map.getValidSpawnLocation(), sf::Color(200, 50, 50)),
+m_Player2(m_Map.getValidSpawnLocation(), sf::Color(0, 100, 255))
 {
     this->stateID = zge::StateID::GameState;
     this->targetState = stateID;
-    m_Map.setMapSize(sf::Vector2i(Constant::windowHeight,
-                                  Constant::windowHeight));
     m_Player1.useWASD();
-    m_Player1.setColor(sf::Color(200, 50, 50));
-
     m_Player2.useArrows();
-    m_Player2.setColor(sf::Color(0, 100, 255));
 }
 
 void GameState::handleEvent(sf::Event& event, sf::RenderWindow& window)

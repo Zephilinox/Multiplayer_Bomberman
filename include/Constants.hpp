@@ -1,7 +1,7 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 
-enum GridValue {Empty = 0, WallIndestructible, WallDestructible};
+enum GridValue {Empty = 0, WallIndestructible, WallDestructible, Player};
 
 namespace Constant
 {

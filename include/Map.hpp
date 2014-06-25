@@ -9,14 +9,15 @@
 
 //SELF
 #include "ResourceManagement/ResourceCache.hpp"
-#include "Constants.hpp"
 
 class Map : public sf::Drawable
 {
 public:
-    Map();
+    Map(sf::Vector2i size);
     void update(const sf::Time& delta);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    sf::Vector2f getValidSpawnLocation();
 
     int getCollisionGridSquare(sf::Vector2i pos);
     void setCollisionGridSquare(sf::Vector2i pos, int val);

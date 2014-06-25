@@ -13,14 +13,12 @@
 class Player : public sf::Drawable
 {
 public:
-    Player();
+    Player(sf::Vector2f pos, sf::Color c);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void handleEvent(sf::Event& event);
     void update(sf::Time delta, Map& map);
     void useWASD();
     void useArrows();
-
-    void setColor(sf::Color c);
 
 private:
     Resource<sf::Texture> m_Texture;

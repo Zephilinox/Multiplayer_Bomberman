@@ -9,11 +9,12 @@
 //SELF
 #include "Constants.hpp"
 
-Player::Player():
+Player::Player(sf::Vector2f pos, sf::Color c):
 m_Texture("textures/player.png")
 {
     m_Sprite.setTexture(m_Texture.get());
-    m_Sprite.setPosition(Constant::tileSize, Constant::tileSize);
+    m_Sprite.setColor(c);
+    m_Sprite.setPosition(pos);
     m_Destination = m_Sprite.getPosition();
     m_Source = m_Sprite.getPosition();
 
@@ -142,6 +143,10 @@ void Player::horizontalMovement()
 
 void Player::update(sf::Time delta, Map& map)
 {
+    map.setCollisionGridSquare(sf::Vector2i(int((m_Sprite.getPosition().x + (Constant::tileSize/2)) / Constant::tileSize),
+                                            int((m_Sprite.getPosition().y + (Constant::tileSize/2)) / Constant::tileSize)),
+                                            GridValue::Empty);
+
     /*if (sf::Keyboard::isKeyPressed(m_Bomb) && m_BombSpawnTimer.getElapsedTime().asSeconds() >= delta.asSeconds())
     {
         m_BombSpawnTimer.restart();
@@ -195,6 +200,10 @@ void Player::update(sf::Time delta, Map& map)
     m_DestinationTile.setPosition(m_Destination);
     m_SpriteTile.setPosition(int((m_Sprite.getPosition().x + (Constant::tileSize/2)) / Constant::tileSize) * Constant::tileSize,
                              int((m_Sprite.getPosition().y + (Constant::tileSize/2)) / Constant::tileSize) * Constant::tileSize);
+
+    map.setCollisionGridSquare(sf::Vector2i(int((m_Sprite.getPosition().x + (Constant::tileSize/2)) / Constant::tileSize),
+                                            int((m_Sprite.getPosition().y + (Constant::tileSize/2)) / Constant::tileSize)),
+                                            GridValue::Player);
 }
 
 void Player::useWASD()
@@ -213,9 +222,4 @@ void Player::useArrows()
     m_Down = sf::Keyboard::Key::Down;
     m_Right = sf::Keyboard::Key::Right;
     m_Bomb = sf::Keyboard::Key::RControl;
-}
-
-void Player::setColor(sf::Color c)
-{
-    m_Sprite.setColor(c);
 }

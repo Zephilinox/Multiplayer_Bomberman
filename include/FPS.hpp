@@ -26,7 +26,7 @@ public:
 private:
     unsigned int m_UpdateRate;
 
-    sf::Text m_Text;
+    mutable sf::Text m_Text;
     Resource<sf::Font> m_Font;
 };
 
